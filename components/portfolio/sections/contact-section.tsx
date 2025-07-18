@@ -4,19 +4,7 @@ import type React from "react"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Github,
-  Linkedin,
-  MessageCircle,
-  Download,
-  Users,
-  Award,
-  Rocket,
-  ArrowRight,
-} from "lucide-react"
+import { Mail, Phone, MapPin, Github, Linkedin, MessageCircle, Download, Rocket, ArrowRight } from "lucide-react"
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -121,53 +109,6 @@ export const ContactSection: React.FC = () => {
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          {/* Leadership Roles */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">Positions of Responsibility</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-white/[0.08] backdrop-blur-xl rounded-2xl border border-white/10 p-6 text-center hover:bg-white/[0.12] transition-all duration-300"
-              >
-                <div className="p-3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 w-fit mx-auto mb-4">
-                  <Users className="w-6 h-6 text-white" />
-                </div>
-                <h4 className="text-lg font-bold text-white mb-2">Class Representative</h4>
-                <p className="text-white/70 text-sm">
-                  Student Representative for General Engineering Branch 2024 batch
-                </p>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-white/[0.08] backdrop-blur-xl rounded-2xl border border-white/10 p-6 text-center hover:bg-white/[0.12] transition-all duration-300"
-              >
-                <div className="p-3 rounded-full bg-gradient-to-r from-green-500 to-green-600 w-fit mx-auto mb-4">
-                  <Award className="w-6 h-6 text-white" />
-                </div>
-                <h4 className="text-lg font-bold text-white mb-2">SAIC Core Team</h4>
-                <p className="text-white/70 text-sm">Core Team Member at SAIC, The Cyber Security Cell of IIT Mandi</p>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-white/[0.08] backdrop-blur-xl rounded-2xl border border-white/10 p-6 text-center hover:bg-white/[0.12] transition-all duration-300"
-              >
-                <div className="p-3 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 w-fit mx-auto mb-4">
-                  <Rocket className="w-6 h-6 text-white" />
-                </div>
-                <h4 className="text-lg font-bold text-white mb-2">Xpecto Volunteer</h4>
-                <p className="text-white/70 text-sm">Volunteered for Sponsorship Team of Xpecto'25</p>
-              </motion.div>
-            </div>
-          </motion.div>
-
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

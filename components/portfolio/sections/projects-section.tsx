@@ -2,7 +2,8 @@
 
 import type React from "react"
 import { motion } from "framer-motion"
-import { Rocket, Activity, ArrowRight } from "lucide-react"
+import { Rocket, Activity, Github, ExternalLink } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { projects } from "@/data/projects"
 
 export const ProjectsSection: React.FC = () => {
@@ -49,15 +50,15 @@ export const ProjectsSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className={`relative bg-gradient-to-br ${project.gradient} backdrop-blur-xl rounded-2xl border border-white/10 p-6 group hover:border-white/20 transition-all`}
+              className={`relative bg-gradient-to-br ${project.gradient} backdrop-blur-xl rounded-2xl border border-white/10 p-8 group hover:border-white/20 transition-all`}
               variants={fadeInUp}
               whileHover={{ scale: 1.02, y: -5 }}
             >
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-2">
                   <Rocket className="w-5 h-5 text-blue-400" />
                   <span className="text-xs px-2 py-1 bg-green-500/20 text-green-300 rounded-full">
@@ -72,10 +73,25 @@ export const ProjectsSection: React.FC = () => {
                 </motion.div>
               </div>
 
-              <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
+
               <p className="text-white/70 mb-4 leading-relaxed">{project.description}</p>
 
-              <div className="flex flex-wrap gap-2 mb-4">
+              <p className="text-white/60 mb-6 leading-relaxed text-sm">{project.longDescription}</p>
+
+              <div className="mb-6">
+                <h4 className="text-white font-semibold mb-3">Key Features:</h4>
+                <ul className="space-y-2">
+                  {project.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="text-white/70 text-sm flex items-start">
+                      <span className="text-blue-400 mr-2 mt-1">•</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((tech, techIndex) => (
                   <span key={techIndex} className="text-xs px-2 py-1 bg-white/10 text-white/80 rounded">
                     {tech}
@@ -83,9 +99,32 @@ export const ProjectsSection: React.FC = () => {
                 ))}
               </div>
 
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-green-400 font-medium">{project.impact}</span>
-                <ArrowRight className="w-4 h-4 text-white/40 group-hover:text-white/80 transition-colors" />
+              {/* Action Buttons */}
+              <div className="flex gap-2">
+                {project.liveUrl && (
+                  <Button
+                    size="sm"
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white flex-1"
+                    asChild
+                  >
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Live Demo
+                    </a>
+                  </Button>
+                )}
+                {project.sourceUrl && (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="border-slate-600 text-gray-300 hover:bg-slate-700 bg-transparent"
+                    asChild
+                  >
+                    <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer">
+                      <Github className="w-4 h-4" />
+                    </a>
+                  </Button>
+                )}
               </div>
             </motion.div>
           ))}

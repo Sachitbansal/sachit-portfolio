@@ -9,6 +9,15 @@ export interface Achievement {
   category: string
 }
 
+export interface Certification {
+  title: string
+  issuer: string
+  year: string
+  description: string
+  icon: typeof Shield
+  credentialUrl?: string
+}
+
 export const achievements: Achievement[] = [
   {
     title: "1st Place - KrackHack'25",
@@ -26,14 +35,6 @@ export const achievements: Achievement[] = [
       "Secured first position in robotics competition where teams created sumo wrestling robots and competed",
     icon: Award,
     category: "Robotics",
-  },
-  {
-    title: "Google Cybersecurity Professional Certificate",
-    event: "Coursera Platform",
-    year: "2024",
-    description: "Earned Google Certification on cybersecurity basics, network security, and ethical hacking",
-    icon: Shield,
-    category: "Certification",
   },
   {
     title: "AIR 9 - Shaastra Juniors Individual Championship",
@@ -58,5 +59,17 @@ export const achievements: Achievement[] = [
     description: "Bagged 8th position in Computational Agriculture Competition held during IIT Bombay Techfest",
     icon: Target,
     category: "Competition",
+  },
+]
+
+export const certifications: Certification[] = [
+  {
+    title: "Google Cybersecurity Professional Certificate",
+    issuer: "Google via Coursera",
+    year: "2024",
+    description:
+      "Comprehensive certification covering cybersecurity fundamentals, network security, and ethical hacking practices",
+    icon: Shield,
+    credentialUrl: "https://coursera.org/verify/professional-cert/example",
   },
 ]

@@ -3,10 +3,10 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Sachit Bansal',
-  description: 'Crafting AI-powered, secure, and scalable solutions — blending deep tech with sharp product and marketing acumen.',
+  description: 'IITian | Building with Agentic AI, LLMs & Pipelines | Product Solutions & Innovations | Blend of Tech, Marketing & Leadership | Solving Real-World Problems with Scalable Impact',
   openGraph: {
     title: 'Sachit Bansal',
-    description: 'Crafting AI-powered, secure, and scalable solutions — blending deep tech with sharp product and marketing acumen.',
+    description: 'IITian | Building with Agentic AI, LLMs & Pipelines | Product Solutions & Innovations | Blend of Tech, Marketing & Leadership | Solving Real-World Problems with Scalable Impact',
     url: 'https://sachitbansal.sbssdigital.com/', // replace with your actual domain
     siteName: 'Sachit Bansal',
     images: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'Sachit Bansal',
-    description: 'Crafting AI-powered, secure, and scalable solutions — blending deep tech with sharp product and marketing acumen.',
+    description: 'IITian | Building with Agentic AI, LLMs & Pipelines | Product Solutions & Innovations | Blend of Tech, Marketing & Leadership | Solving Real-World Problems with Scalable Impact',
     images: ['/placeholder-user.jpg'], // path to your image in the public folder
   },
 }

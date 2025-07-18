@@ -2,7 +2,6 @@
 
 import type React from "react"
 import { motion } from "framer-motion"
-import { CheckCircle } from "lucide-react"
 import { skillCategories } from "@/data/skills"
 
 export const SkillsSection: React.FC = () => {
@@ -53,7 +52,17 @@ export const SkillsSection: React.FC = () => {
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
-              className={`relative bg-gradient-to-br ${category.gradient} backdrop-blur-xl rounded-2xl border border-white/10 p-8 group`}
+              className="relative backdrop-blur-xl rounded-2xl border-2 p-8 group"
+              style={{
+                borderImage: `linear-gradient(135deg, ${category.color.replace("text-", "")}, transparent) 1`,
+                borderColor: category.color.includes("blue")
+                  ? "#60a5fa"
+                  : category.color.includes("green")
+                    ? "#4ade80"
+                    : category.color.includes("purple")
+                      ? "#a855f7"
+                      : "#fb7185",
+              }}
               variants={fadeInUp}
               whileHover={{ scale: 1.02 }}
             >
@@ -75,7 +84,6 @@ export const SkillsSection: React.FC = () => {
                     className="flex items-center gap-2 p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
                     whileHover={{ x: 5 }}
                   >
-                    <CheckCircle className="w-4 h-4 text-green-400" />
                     <span className="text-white/80 text-sm">{skill}</span>
                   </motion.div>
                 ))}

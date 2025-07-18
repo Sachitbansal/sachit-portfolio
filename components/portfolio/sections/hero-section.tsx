@@ -2,7 +2,8 @@
 
 import type React from "react"
 import { motion } from "framer-motion"
-import { Mail, Github, Sparkles } from "lucide-react"
+import { Mail, Github, Linkedin, MessageCircle } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { TerminalAnimation } from "../animations/terminal-animation"
 
 export const HeroSection: React.FC = () => {
@@ -29,6 +30,11 @@ export const HeroSection: React.FC = () => {
     },
   }
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    element?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-black to-purple-950/20" />
@@ -47,15 +53,14 @@ export const HeroSection: React.FC = () => {
             animate={{ rotate: 360 }}
             transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
           >
-            <Sparkles className="h-4 w-4 text-blue-300" />
+            <div className="h-4 w-4 text-blue-300">✨</div>
           </motion.div>
-          <span className="text-sm font-medium text-white/80">✨ IIT Mandi Student & Tech Innovator</span>
+          <span className="text-sm font-medium text-white/80">IIT Mandi Student & Tech Innovator</span>
           <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
         </motion.div>
 
+        {/* Single Line Name */}
         <motion.h1 className="text-5xl sm:text-7xl md:text-8xl font-bold mb-8 tracking-tight" variants={fadeInUp}>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">Sachit</span>
-          <br />
           <motion.span
             className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300"
             animate={{
@@ -70,41 +75,92 @@ export const HeroSection: React.FC = () => {
               backgroundSize: "200% 200%",
             }}
           >
-            Bansal
+            Sachit Bansal
           </motion.span>
         </motion.h1>
 
-        <motion.p
-          className="text-xl sm:text-2xl text-white/60 max-w-4xl mx-auto leading-relaxed mb-12"
-          variants={fadeInUp}
+        {/* Professional Info Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="mx-auto max-w-2xl mb-12"
+          style={{ margin: "10px auto 48px auto" }}
         >
-          B.Tech General Engineering student at IIT Mandi, specializing in Python automation, AI agents, and full-stack
-          development. Building innovative solutions with cutting-edge technology.
-        </motion.p>
+          <div
+            className="backdrop-blur-sm border rounded-lg"
+            style={{
+              backgroundColor: "rgba(128, 128, 128, 0.1)",
+              padding: "20px",
+              border: "2px solid rgba(100, 100, 100, 0.5)",
+              lineHeight: "1.6",
+            }}
+          >
+            <h2 className="text-xl sm:text-2xl font-semibold text-white mb-3">Software Engineer & AI/ML Enthusiast</h2>
+            <p className="text-lg text-white/70 leading-relaxed">
+              Building intelligent solutions and automating the future, one line of code at a time
+            </p>
+          </div>
+        </motion.div>
 
         <motion.div className="max-w-md mx-auto mb-12" variants={fadeInUp}>
           <TerminalAnimation />
         </motion.div>
 
-        <motion.div className="flex flex-wrap justify-center gap-6" variants={fadeInUp}>
-          <motion.a
-            href="mailto:sachitbansal2006@gmail.com"
-            className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+        {/* Social Links with View Work Button */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105"
+            onClick={() => scrollToSection("projects")}
           >
-            <Mail className="w-5 h-5" />
-            Get In Touch
-          </motion.a>
-          <motion.a
-            href="https://github.com/Sachitbansal"
-            className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Github className="w-5 h-5" />
-            View Projects
-          </motion.a>
+            View My Work
+          </Button>
+          <div className="flex gap-4">
+            <motion.a
+              href="https://github.com/Sachitbansal"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-3 rounded-full bg-white/[0.08] hover:bg-white/[0.15] transition-colors duration-300 border border-white/10"
+            >
+              <Github className="w-6 h-6 text-white/80" />
+            </motion.a>
+            <motion.a
+              href="https://linkedin.com/in/sachit-bansal/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-3 rounded-full bg-white/[0.08] hover:bg-white/[0.15] transition-colors duration-300 border border-white/10"
+            >
+              <Linkedin className="w-6 h-6 text-white/80" />
+            </motion.a>
+            <motion.a
+              href="mailto:sachitbansal2006@gmail.com"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-3 rounded-full bg-white/[0.08] hover:bg-white/[0.15] transition-colors duration-300 border border-white/10"
+            >
+              <Mail className="w-6 h-6 text-white/80" />
+            </motion.a>
+            <motion.a
+              href="https://wa.me/919501006994"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-3 rounded-full bg-white/[0.08] hover:bg-white/[0.15] transition-colors duration-300 border border-white/10"
+            >
+              <MessageCircle className="w-6 h-6 text-white/80" />
+            </motion.a>
+          </div>
         </motion.div>
       </motion.div>
 
