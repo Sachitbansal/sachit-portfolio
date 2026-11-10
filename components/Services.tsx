@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import { services, type Service } from "@/lib/content"
 import { Reveal, Tilt } from "./motion"
 
@@ -78,6 +79,46 @@ function Glyph({ k }: { k: Service["key"] }) {
 }
 
 export function Services() {
+  const row = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(0)
+
+  // Phone only: the row scrolls sideways, so show which card is in view and nudge the row once
+  // when it first appears, so people see there is more to swipe.
+  useEffect(() => {
+    const el = row.current
+    if (!el) return
+    const onScroll = () => {
+      const card = el.firstElementChild as HTMLElement | null
+      if (!card) return
+      setActive(Math.min(services.length - 1, Math.round(el.scrollLeft / (card.offsetWidth + 12))))
+    }
+    el.addEventListener("scroll", onScroll, { passive: true })
+    let t: ReturnType<typeof setTimeout>
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting || el.scrollWidth <= el.clientWidth || el.scrollLeft > 0) return
+        io.disconnect()
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+        // snapping would cancel a partial scroll, so switch it off for the nudge
+        t = setTimeout(() => {
+          el.style.scrollSnapType = "none"
+          el.scrollTo({ left: 90, behavior: "smooth" })
+          t = setTimeout(() => {
+            el.scrollTo({ left: 0, behavior: "smooth" })
+            t = setTimeout(() => (el.style.scrollSnapType = ""), 600)
+          }, 650)
+        }, 700)
+      },
+      { threshold: 0.6 },
+    )
+    io.observe(el)
+    return () => {
+      el.removeEventListener("scroll", onScroll)
+      io.disconnect()
+      clearTimeout(t)
+    }
+  }, [])
+
   return (
     <section id="services" className="relative mx-auto max-w-6xl scroll-mt-16 py-20 sm:px-6 lg:py-16">
       <Reveal className="mb-8 flex flex-col gap-3 px-5 sm:px-0 md:flex-row md:items-end md:justify-between lg:mb-8">
@@ -94,9 +135,10 @@ export function Services() {
       </Reveal>
 
       {/* phone: swipeable row · tablet & desktop: compact 2×2 that fits one screen */}
-      <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
+      <Reveal>
+      <div ref={row} className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
         {services.map((s, i) => (
-          <Reveal key={s.key} delay={i * 0.06} className="w-[82%] shrink-0 snap-start sm:w-auto">
+          <div key={s.key} className="w-[82%] shrink-0 snap-start sm:w-auto">
             <Tilt className="h-full" max={3}>
               <article className="group flex h-full flex-col gap-4 rounded-3xl border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-[0_30px_60px_-30px_rgba(13,16,22,0.25)] lg:flex-row lg:gap-6 lg:p-7">
                 <div className="h-16 w-20 shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 lg:h-20 lg:w-24">
@@ -115,9 +157,20 @@ export function Services() {
                 </div>
               </article>
             </Tilt>
-          </Reveal>
+          </div>
         ))}
       </div>
+      <div className="mt-2 flex items-center justify-between px-5 sm:hidden">
+        <div className="flex gap-1.5">
+          {services.map((s, i) => (
+            <span key={s.key} className={`h-1.5 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-flame" : "w-1.5 bg-line"}`} />
+          ))}
+        </div>
+        <span className="font-mono text-[11px] text-muted">
+          {active === services.length - 1 ? "4 / 4" : "Swipe for more →"}
+        </span>
+      </div>
+      </Reveal>
     </section>
   )
 }
