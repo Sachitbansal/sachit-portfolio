@@ -79,38 +79,41 @@ function Glyph({ k }: { k: Service["key"] }) {
 
 export function Services() {
   return (
-    <section id="services" className="relative mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6">
-      <Reveal className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+    <section id="services" className="relative mx-auto max-w-6xl scroll-mt-16 py-20 sm:px-6 lg:py-16">
+      <Reveal className="mb-8 flex flex-col gap-3 px-5 sm:px-0 md:flex-row md:items-end md:justify-between lg:mb-8">
         <div>
           <div className="label mb-3 text-flame">What I can do for you</div>
-          <h2 className="max-w-[18ch] font-display text-[clamp(32px,4.4vw,52px)] font-bold leading-[1.02] tracking-[-0.03em]">
+          <h2 className="max-w-[18ch] font-display text-[clamp(30px,4vw,48px)] font-bold leading-[1.02] tracking-[-0.03em]">
             One person for the whole product.
           </h2>
         </div>
-        <p className="max-w-[46ch] text-muted">
+        <p className="max-w-[44ch] text-muted">
           Most projects need some AI, a few automations, a website and a cloud to run it all. I do all four, so nothing
           gets lost between different freelancers.
         </p>
       </Reveal>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      {/* phone: swipeable row · tablet: 2×2 · desktop: one row of four, fits one screen */}
+      <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden">
         {services.map((s, i) => (
-          <Reveal key={s.key} delay={i * 0.08}>
-            <Tilt className="h-full">
-              <article className="group flex h-full flex-col gap-5 rounded-3xl border border-line bg-surface p-7 transition-shadow duration-300 hover:shadow-[0_30px_60px_-30px_rgba(13,16,22,0.25)]">
-                <div className="h-24 w-32 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105">
-                  <Glyph k={s.key} />
+          <Reveal key={s.key} delay={i * 0.06} className="w-[82%] shrink-0 snap-start sm:w-auto">
+            <Tilt className="h-full" max={3}>
+              <article className="group flex h-full flex-col gap-3.5 rounded-3xl border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-[0_30px_60px_-30px_rgba(13,16,22,0.25)]">
+                <div className="flex items-center justify-between">
+                  <div className="h-16 w-20 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105">
+                    <Glyph k={s.key} />
+                  </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="font-display text-2xl font-bold tracking-tight">{s.title}</h3>
-                  <p className="text-muted">{s.body}</p>
+                  <h3 className="font-display text-xl font-bold leading-tight tracking-tight">{s.title}</h3>
+                  <p className="text-[15px] leading-relaxed text-muted">{s.body}</p>
                 </div>
-                <div className="mt-auto flex flex-col gap-3 border-t border-line pt-4">
-                  <div className="flex items-start gap-2 text-sm font-medium">
-                    <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-flame" />
+                <div className="mt-auto flex flex-col gap-2 border-t border-line pt-4">
+                  <div className="flex items-start gap-2 text-sm font-medium leading-snug">
+                    <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-flame" />
                     {s.proof}
                   </div>
-                  <div className="font-mono text-[11px] text-muted">{s.tools}</div>
+                  <div className="font-mono text-[11px] leading-relaxed text-muted">{s.tools}</div>
                 </div>
               </article>
             </Tilt>

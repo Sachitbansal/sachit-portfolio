@@ -39,29 +39,29 @@ export const services: Service[] = [
   {
     key: "ai",
     title: "AI assistants & agents",
-    body: "Assistants that answer from your own documents and data, and AI agents that can search, decide and act on their own, with every answer checked against a source.",
+    body: "Assistants that answer from your own documents, and agents that search, decide and act on their own.",
     proof: "SciAgent: backs every answer with a source",
     tools: "LLMs · AI agents · RAG · LangChain · Hugging Face",
   },
   {
     key: "automation",
     title: "Workflow automation",
-    body: "The repetitive work your team does by hand (reading, sorting, reporting, following up), turned into workflows that run on their own, around the clock.",
-    proof: "Customer Targeting: decisions update live with every transaction",
+    body: "The repetitive work your team does by hand, turned into workflows that run on their own, around the clock.",
+    proof: "Customer Targeting: live decisions on every transaction",
     tools: "Python · Pathway · NATS · Redis · APIs",
   },
   {
     key: "web",
     title: "Websites & web apps",
-    body: "Fast, good-looking websites, dashboards and internal tools that work on every screen and are easy to keep up to date.",
+    body: "Fast, good-looking websites, dashboards and internal tools that work on every screen.",
     proof: "Webspark: builds a whole website from one sentence",
     tools: "Next.js · React · Django · FastAPI",
   },
   {
     key: "cloud",
     title: "Cloud, hosting & security",
-    body: "I set up the cloud, deploy your product and look after the servers, so it stays online, fast and safe as it grows.",
-    proof: "System admin for 50+ sites on IIT Mandi's student server",
+    body: "I set up the cloud, deploy your product and keep it online, fast and safe as it grows.",
+    proof: "Runs 50+ sites on IIT Mandi's student server",
     tools: "AWS · Docker · Linux · Cloudflare · Vercel",
   },
 ]
@@ -170,5 +170,5 @@ export const record = [
 
 export const education = [
   { school: "Leibniz Universität Hannover", detail: "Exchange semester, Computer Science & AI", when: "Oct 2026 – Mar 2027" },
-  { school: "IIT Mandi", detail: "B.Tech, General Engineering (AI & Robotics)", when: "2024 – present" },
+  { school: "IIT Mandi", detail: "B.Tech, General Engineering (AI & Robotics)", when: "2024 – 2028" },
 ]

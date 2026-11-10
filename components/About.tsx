@@ -1,14 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { cooking, education, profile, record } from "@/lib/content"
+import { cooking, education, record } from "@/lib/content"
 import { Reveal, Tilt } from "./motion"
 
 const now: [string, string][] = [
   ["Based in", "Hannover, Germany, until March 2027. Home is India."],
   ["Studying", "Computer Science & AI, exchange at Leibniz Universität Hannover"],
   ["Building", cooking[0].charAt(0).toUpperCase() + cooking[0].slice(1)],
-  ["Open to", profile.availability],
+  ["Open to", "Freelance projects, internships and Werkstudent roles"],
 ]
 
 export function Record() {

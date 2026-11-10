@@ -60,14 +60,22 @@ export function Toolkit() {
   const st = stages[active]
 
   return (
-    <section ref={ref} id="toolkit" className="relative h-[520vh] rounded-t-[40px] bg-night text-white sm:rounded-t-[56px]">
-      <div className="sticky top-0 h-screen overflow-hidden">
+    <section ref={ref} id="toolkit" data-dark className="relative h-[480vh] rounded-t-[32px] bg-night text-white sm:rounded-t-[56px]">
+      <div className="sticky top-0 h-[100svh] overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(47,91,255,0.14),transparent_60%)]" />
         <Universe stage={stage} stages={stages.map((s) => s.logos)} />
 
-        <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-4 pb-14 pt-28 sm:px-6 lg:justify-center lg:pb-0">
-          <div className="label mb-6 text-flame">My toolkit</div>
-          <div className="min-h-[260px] max-w-[440px]">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-night via-night/90 to-transparent lg:hidden" />
+        <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-5 pb-10 pt-24 sm:px-6 lg:justify-center lg:pb-0">
+          <div className="mb-4 flex items-center gap-3 lg:mb-6">
+            <span className="label text-flame">My toolkit</span>
+            <div className="flex gap-1.5 sm:hidden">
+              {stages.map((s, i) => (
+                <span key={s.kicker} className={`h-1 rounded-full transition-all duration-500 ${i === active ? "w-5 bg-flame" : "w-1.5 bg-white/25"}`} />
+              ))}
+            </div>
+          </div>
+          <div className="min-h-[290px] max-w-[440px] sm:min-h-[260px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -79,9 +87,9 @@ export function Toolkit() {
                 <div className="mb-3 font-mono text-xs text-white/50">
                   0{active + 1} / 0{stages.length} · {st.kicker}
                 </div>
-                <h2 className="font-display text-[clamp(34px,4.6vw,56px)] font-bold leading-[1.02] tracking-[-0.03em]">{st.title}</h2>
-                <p className="mt-4 text-white/65 sm:text-lg">{st.body}</p>
-                <ul className="mt-6 flex flex-wrap gap-2">
+                <h2 className="font-display text-[clamp(30px,4.6vw,56px)] font-bold leading-[1.02] tracking-[-0.03em]">{st.title}</h2>
+                <p className="mt-3 text-[15px] leading-relaxed text-white/65 sm:mt-4 sm:text-lg">{st.body}</p>
+                <ul className="mt-5 flex flex-wrap gap-2 sm:mt-6">
                   {st.logos.map((l) => (
                     <li key={l.title} className="flex items-center gap-2 rounded-full border border-night-line bg-night-2/80 px-3 py-1.5 text-xs text-white/80 backdrop-blur">
                       <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 fill-current" aria-hidden="true">

@@ -6,7 +6,7 @@ import { ProjectVisual } from "./Visuals"
 
 export function Work() {
   return (
-    <section id="work" className="scroll-mt-16 bg-night text-white">
+    <section id="work" data-dark className="scroll-mt-16 bg-night text-white">
       <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
         <Reveal className="mb-16 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>

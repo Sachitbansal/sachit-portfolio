@@ -11,7 +11,7 @@ export function Process() {
   const fill = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   return (
-    <section id="process" className="bg-night text-white">
+    <section id="process" data-dark className="bg-night text-white">
       <div className="mx-auto max-w-6xl scroll-mt-24 px-4 pb-28 pt-8 sm:px-6">
         <Reveal className="mb-14">
           <div className="label mb-3 text-flame">How a project goes</div>

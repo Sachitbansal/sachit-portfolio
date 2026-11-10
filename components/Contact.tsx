@@ -1,10 +1,19 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, Linkedin, Twitter } from "lucide-react"
+import { Github, Linkedin } from "lucide-react"
+import { siX } from "simple-icons"
 import { useState } from "react"
 import { profile } from "@/lib/content"
 import { Reveal } from "./motion"
+
+function XLogo({ size = 17 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 24 24" width={size - 2} height={size - 2} fill="currentColor" aria-hidden="true">
+      <path d={siX.path} />
+    </svg>
+  )
+}
 
 export function Contact() {
   const [copied, setCopied] = useState(false)
@@ -20,7 +29,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="scroll-mt-16 px-4 pb-6 sm:px-6">
-      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[40px] bg-ink px-6 py-20 text-white sm:px-14 sm:py-24">
+      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[32px] bg-ink px-6 py-16 text-white sm:rounded-[40px] sm:px-14 sm:py-24">
         <motion.div
           className="pointer-events-none absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full bg-flame/30 blur-[100px]"
           animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0.9, 0.6] }}
@@ -50,7 +59,7 @@ export function Contact() {
             </a>
             <button
               onClick={copy}
-              className="select-all rounded-full border border-white/20 px-6 py-4 font-mono text-sm text-white/80 transition-colors hover:border-white/60"
+              className="max-w-full select-all break-all rounded-full border border-white/20 px-5 py-4 text-left font-mono text-[13px] text-white/80 sm:px-6 sm:text-sm transition-colors hover:border-white/60"
             >
               {copied ? "Copied ✓" : profile.email}
             </button>
@@ -58,11 +67,11 @@ export function Contact() {
 
           <div className="mt-12 flex flex-wrap items-center gap-6 border-t border-white/10 pt-6 text-sm text-white/60">
             <span>Based in {profile.location} · working with teams anywhere</span>
-            <div className="ml-auto flex gap-4">
+            <div className="flex gap-3 sm:ml-auto">
               {[
                 [profile.links.linkedin, Linkedin, "LinkedIn"],
                 [profile.links.github, Github, "GitHub"],
-                [profile.links.x, Twitter, "X"],
+                [profile.links.x, XLogo, "X"],
               ].map(([href, Icon, label]) => {
                 const I = Icon as typeof Github
                 return (

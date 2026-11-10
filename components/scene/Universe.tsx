@@ -252,9 +252,9 @@ function LogoRing({ logos, index, stage }: { logos: Logo[]; index: number; stage
   )
 }
 
-function Rig({ stage, stages, offsetX, count }: { stage: React.MutableRefObject<number>; stages: Logo[][]; offsetX: number; count: number }) {
+function Rig({ stage, stages, offsetX, offsetY, count }: { stage: React.MutableRefObject<number>; stages: Logo[][]; offsetX: number; offsetY: number; count: number }) {
   return (
-    <group position={[offsetX, 0, 0]}>
+    <group position={[offsetX, offsetY, 0]} scale={offsetY ? 0.82 : 1}>
       <Particles stage={stage} count={count} />
       {stages.map((logos, i) => (
         <LogoRing key={i} logos={logos} index={i} stage={stage} />
@@ -281,8 +281,8 @@ export default function Universe({ stage, stages }: { stage: React.MutableRefObj
   }, [])
   return (
     <div ref={wrap} className="absolute inset-0" aria-hidden="true">
-      <Canvas frameloop={visible ? "always" : "never"} dpr={[1, 1.75]} camera={{ position: [0, 0, wide ? 8 : 10.5], fov: 42 }} gl={{ alpha: true, antialias: false }}>
-        <Rig stage={stage} stages={stages} offsetX={wide ? 1.9 : 0} count={wide ? 7000 : 4000} />
+      <Canvas frameloop={visible ? "always" : "never"} dpr={[1, 1.75]} camera={{ position: [0, 0, wide ? 8 : 11], fov: 42 }} gl={{ alpha: true, antialias: false }}>
+        <Rig stage={stage} stages={stages} offsetX={wide ? 1.9 : 0} offsetY={wide ? 0 : 2.1} count={wide ? 7000 : 3500} />
       </Canvas>
     </div>
   )

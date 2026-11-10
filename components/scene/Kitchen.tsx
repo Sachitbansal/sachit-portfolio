@@ -48,6 +48,7 @@ function rr(c: CanvasRenderingContext2D, x: number, y: number, w: number, h: num
 
 function Label({ children, position }: { children: React.ReactNode; position: [number, number, number] }) {
   const compact = useContext(Compact)
+  if (compact) return null
   return (
     <Html position={position} center distanceFactor={compact ? 4.2 : 6} zIndexRange={[10, 0]} style={{ pointerEvents: "none" }}>
       <div className="whitespace-nowrap rounded-full border border-line bg-surface/90 px-3 py-1 font-mono text-[11px] tracking-wide text-ink shadow-sm backdrop-blur">
@@ -285,7 +286,7 @@ function Rig({ compact }: { compact: boolean }) {
     if (group.current) {
       group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, pointer.current.x * 0.35 + p * 0.9, 3, dt)
       group.current.rotation.x = THREE.MathUtils.damp(group.current.rotation.x, pointer.current.y * 0.18, 3, dt)
-      const s = (compact ? 0.66 : 0.8) * (1 - p * 0.15)
+      const s = (compact ? 0.74 : 0.8) * (1 - p * 0.15)
       group.current.scale.setScalar(s)
     }
     sats.current.forEach((g, i) => {
