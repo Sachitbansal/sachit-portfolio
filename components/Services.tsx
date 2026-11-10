@@ -93,27 +93,25 @@ export function Services() {
         </p>
       </Reveal>
 
-      {/* phone: swipeable row · tablet: 2×2 · desktop: one row of four, fits one screen */}
-      <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden">
+      {/* phone: swipeable row · tablet & desktop: compact 2×2 that fits one screen */}
+      <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
         {services.map((s, i) => (
           <Reveal key={s.key} delay={i * 0.06} className="w-[82%] shrink-0 snap-start sm:w-auto">
             <Tilt className="h-full" max={3}>
-              <article className="group flex h-full flex-col gap-3.5 rounded-3xl border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-[0_30px_60px_-30px_rgba(13,16,22,0.25)]">
-                <div className="flex items-center justify-between">
-                  <div className="h-16 w-20 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105">
-                    <Glyph k={s.key} />
-                  </div>
+              <article className="group flex h-full flex-col gap-4 rounded-3xl border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-[0_30px_60px_-30px_rgba(13,16,22,0.25)] lg:flex-row lg:gap-6 lg:p-7">
+                <div className="h-16 w-20 shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 lg:h-20 lg:w-24">
+                  <Glyph k={s.key} />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-display text-xl font-bold leading-tight tracking-tight">{s.title}</h3>
+                <div className="flex min-w-0 flex-1 flex-col gap-2">
+                  <h3 className="font-display text-xl font-bold leading-tight tracking-tight lg:text-[22px]">{s.title}</h3>
                   <p className="text-[15px] leading-relaxed text-muted">{s.body}</p>
-                </div>
-                <div className="mt-auto flex flex-col gap-2 border-t border-line pt-4">
-                  <div className="flex items-start gap-2 text-sm font-medium leading-snug">
-                    <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-flame" />
-                    {s.proof}
+                  <div className="mt-auto flex flex-col gap-1.5 border-t border-line pt-3">
+                    <div className="flex items-start gap-2 text-sm font-medium leading-snug">
+                      <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-flame" />
+                      {s.proof}
+                    </div>
+                    <div className="font-mono text-[11px] leading-relaxed text-muted">{s.tools}</div>
                   </div>
-                  <div className="font-mono text-[11px] leading-relaxed text-muted">{s.tools}</div>
                 </div>
               </article>
             </Tilt>
