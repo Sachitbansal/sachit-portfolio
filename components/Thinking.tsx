@@ -92,7 +92,7 @@ export function Thinking() {
         <Reveal>
           <div className="label mb-3 text-flame">Beyond the code</div>
           <h2 className="max-w-[16ch] font-display text-[clamp(30px,4vw,48px)] font-bold leading-[1.02] tracking-[-0.03em]">
-            I ask who it&apos;s for before I ask how to build it.
+            Before I build anything, I find out who it&apos;s for.
           </h2>
           <p className="mt-5 max-w-[46ch] text-[17px] leading-relaxed text-muted">
             I don&apos;t just take a spec and code it. I&apos;ll question the idea, find who it really helps, talk to

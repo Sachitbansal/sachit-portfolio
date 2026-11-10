@@ -12,7 +12,7 @@ export function Work() {
           <div>
             <div className="label mb-3 text-flame">Selected work</div>
             <h2 className="max-w-[16ch] font-display text-[clamp(32px,4.4vw,52px)] font-bold leading-[1.02] tracking-[-0.03em]">
-              Things I&apos;ve built and shipped.
+              Things I&apos;ve built.
             </h2>
           </div>
           <p className="max-w-[44ch] text-white/60">
