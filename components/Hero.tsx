@@ -48,7 +48,7 @@ function Cooking() {
 }
 
 export function Hero() {
-  const words = ["I", "turn", "ideas", "into", "apps,", "websites", "and", "AI", "tools", "people", "actually", "use."]
+  const words = ["I", "turn", "ideas", "into", "AI", "agents,", "automations", "and", "websites", "people", "actually", "use."]
   return (
     <section id="top" className="grain relative overflow-hidden pt-28 sm:pt-32">
       <div className="pointer-events-none absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-cobalt/10 blur-[120px]" />
@@ -66,7 +66,7 @@ export function Hero() {
             {profile.availability}
           </motion.div>
 
-          <h1 className="font-display text-[clamp(40px,6.4vw,76px)] font-bold leading-[0.98] tracking-[-0.035em]">
+          <h1 className="font-display text-[clamp(38px,5.6vw,66px)] font-bold leading-[0.98] tracking-[-0.035em]">
             {words.map((w, i) => (
               <motion.span
                 key={i}
@@ -87,9 +87,9 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.8, ease }}
             className="mt-6 max-w-[54ch] text-[17px] leading-relaxed text-muted"
           >
-            I&apos;m Sachit, a developer from IIT Mandi. I take a rough idea, build it properly, launch it and keep it
-            running. My apps are live on the App Store and Google Play, I look after 50+ websites, and I&apos;ve taken
-            first place in five competitions.
+            I&apos;m Sachit, a developer from IIT Mandi. I build AI that does real work: assistants that answer from
+            your own data, and automations that take the repetitive jobs off your team. I launch it, host it and keep it
+            running. Two-time KrackHack champion, and I look after 50+ websites.
           </motion.p>
 
           <motion.div

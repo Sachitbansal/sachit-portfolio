@@ -5,17 +5,24 @@ import { Reveal, Tilt } from "./motion"
 
 function Glyph({ k }: { k: Service["key"] }) {
   // Small isometric-ish illustrations, one per service.
-  if (k === "mobile")
+  if (k === "automation")
     return (
       <svg viewBox="0 0 120 90" className="h-full w-full">
-        <rect x="42" y="8" width="36" height="72" rx="8" fill="var(--ink)" />
-        <rect x="46" y="16" width="28" height="56" rx="3" fill="var(--surface)" />
-        <rect x="49" y="22" width="16" height="7" rx="3.5" fill="var(--line)" />
-        <rect x="55" y="33" width="16" height="7" rx="3.5" fill="var(--flame)" />
-        <rect x="49" y="44" width="18" height="7" rx="3.5" fill="var(--line)" />
-        <rect x="53" y="55" width="18" height="7" rx="3.5" fill="var(--flame)" />
-        <circle cx="94" cy="24" r="8" fill="var(--mint)" opacity=".9" />
-        <path d="M90.5 24l2.5 2.5 4.5-5" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <path d="M30 22 C 60 22, 60 45, 84 45 M84 45 C 60 45, 60 68, 30 68" stroke="var(--line)" strokeWidth="2.5" fill="none" />
+        {[
+          [30, 22, "var(--flame)"],
+          [84, 45, "var(--cobalt)"],
+          [30, 68, "var(--mint)"],
+        ].map(([x, y, c], i) => (
+          <g key={i}>
+            <rect x={(x as number) - 20} y={(y as number) - 9} width="40" height="18" rx="6" fill="var(--surface)" stroke="var(--line)" strokeWidth="2" />
+            <circle cx={(x as number) - 11} cy={y as number} r="4" fill={c as string} />
+            <rect x={(x as number) - 4} y={(y as number) - 2} width="18" height="4" rx="2" fill="var(--ink)" />
+          </g>
+        ))}
+        <circle r="3.5" fill="var(--flame)">
+          <animateMotion dur="2.6s" repeatCount="indefinite" path="M30 22 C 60 22, 60 45, 84 45 C 60 45, 60 68, 30 68" />
+        </circle>
       </svg>
     )
   if (k === "web")
@@ -52,17 +59,20 @@ function Glyph({ k }: { k: Service["key"] }) {
         <path d="M53 45h14M60 38v14" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
     )
+  // cloud
   return (
     <svg viewBox="0 0 120 90" className="h-full w-full">
-      {[0, 1, 2].map((i) => (
+      <path d="M38 34a14 14 0 0 1 27-6 11 11 0 0 1 17 9h1a9 9 0 0 1 0 18H39a11 11 0 0 1-1-21z" fill="var(--surface)" stroke="var(--line)" strokeWidth="2" transform="translate(0,-14)" />
+      {[0, 1].map((i) => (
         <g key={i}>
-          <rect x="30" y={14 + i * 22} width="60" height="17" rx="3" fill="var(--ink)" />
-          <circle cx="38" cy={22.5 + i * 22} r="2.5" fill="var(--mint)" />
-          <circle cx="46" cy={22.5 + i * 22} r="2.5" fill="var(--mint)" opacity=".5" />
-          <rect x="62" y={20 + i * 22} width="22" height="5" rx="2" fill="#2a313c" />
+          <rect x="30" y={50 + i * 20} width="60" height="15" rx="3" fill="var(--ink)" />
+          <circle cx="38" cy={57.5 + i * 20} r="2.5" fill="var(--mint)" />
+          <circle cx="46" cy={57.5 + i * 20} r="2.5" fill="var(--mint)" opacity=".5" />
+          <rect x="62" y={55 + i * 20} width="22" height="5" rx="2" fill="#2a313c" />
         </g>
       ))}
-      <path d="M100 30c6 0 8 6 8 10 0 8-8 12-8 12s-8-4-8-12c0-4 2-10 8-10z" fill="var(--flame)" opacity=".9" />
+      <line x1="60" y1="41" x2="60" y2="50" stroke="var(--cobalt)" strokeWidth="2" strokeDasharray="3 2" />
+      <path d="M100 52c6 0 8 6 8 10 0 8-8 12-8 12s-8-4-8-12c0-4 2-10 8-10z" fill="var(--flame)" opacity=".9" />
     </svg>
   )
 }
@@ -78,8 +88,8 @@ export function Services() {
           </h2>
         </div>
         <p className="max-w-[46ch] text-muted">
-          Most projects need an app, a website, some AI and a server to run it all. I do all four, so nothing gets lost
-          between different freelancers.
+          Most projects need some AI, a few automations, a website and a cloud to run it all. I do all four, so nothing
+          gets lost between different freelancers.
         </p>
       </Reveal>
 

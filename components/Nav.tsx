@@ -4,10 +4,10 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion"
 import { useState } from "react"
 
 const links = [
+  ["About", "#about"],
   ["Services", "#services"],
   ["Work", "#work"],
   ["Process", "#process"],
-  ["About", "#about"],
 ]
 
 export function Nav() {

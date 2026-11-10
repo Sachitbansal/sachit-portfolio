@@ -13,11 +13,11 @@ export default function Page() {
       <SmoothScroll />
       <Nav />
       <Hero />
+      <About />
       <Services />
       <Work />
       <Process />
       <Record />
-      <About />
       <Contact />
     </main>
   )

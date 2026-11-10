@@ -1,6 +1,6 @@
 "use client"
 
-// "Something is cooking": four things I build (phone app, website, server, hardware)
+// "Something is cooking": four things I build (automations, websites, cloud, servers)
 // float around an AI core and stream data into it. Scrolling pulls them together;
 // the pointer tilts the whole rig.
 
@@ -57,29 +57,52 @@ function Label({ children, position }: { children: React.ReactNode; position: [n
   )
 }
 
-function Phone() {
-  const screen = useCanvasTexture(256, 512, (c) => {
-    rr(c, 0, 0, 256, 512, 0, "#f7f8fa")
-    rr(c, 0, 0, 256, 64, 0, INK)
-    c.fillStyle = "#fff"
-    c.font = "600 22px sans-serif"
-    c.fillText("Chats", 20, 42)
-    const msgs: [number, number, string][] = [
-      [20, 100, "#e6e9ef"], [96, 160, FLAME], [20, 220, "#e6e9ef"], [70, 280, FLAME], [20, 340, "#e6e9ef"],
-    ]
-    msgs.forEach(([x, y, col], i) => rr(c, x, y, i % 2 ? 140 : 160, 44, 18, col))
-    rr(c, 16, 440, 224, 48, 24, "#e6e9ef")
+function Workflow() {
+  // Automation flow: trigger -> AI step -> action, with a pulse running through it.
+  const pulse = useRef<THREE.Mesh>(null)
+  const nodes: [number, number, number, string][] = [
+    [-0.15, 0.62, 0, FLAME],
+    [0.25, 0, 0.05, COBALT],
+    [-0.15, -0.62, 0, MINT],
+  ]
+  const path = useMemo(
+    () => new THREE.CatmullRomCurve3(nodes.map(([x, y, z]) => new THREE.Vector3(x, y, z))),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  )
+  const tube = useMemo(() => new THREE.TubeGeometry(path, 48, 0.018, 8, false), [path])
+  useFrame(({ clock }) => {
+    if (pulse.current) pulse.current.position.copy(path.getPoint((clock.elapsedTime * 0.45) % 1))
   })
   return (
     <group>
-      <RoundedBox args={[0.92, 1.84, 0.12]} radius={0.12} smoothness={6}>
-        <meshStandardMaterial color={INK} metalness={0.7} roughness={0.25} />
-      </RoundedBox>
-      <mesh position={[0, 0, 0.062]}>
-        <planeGeometry args={[0.8, 1.6]} />
-        <meshBasicMaterial map={screen} toneMapped={false} />
+      <mesh geometry={tube}>
+        <meshStandardMaterial color="#9aa3b2" />
       </mesh>
-      <Label position={[0, -1.18, 0]}>Mobile apps</Label>
+      {nodes.map(([x, y, z, col], i) => (
+        <group key={i} position={[x, y, z]}>
+          <RoundedBox args={[0.78, 0.36, 0.14]} radius={0.07} smoothness={4}>
+            <meshStandardMaterial color="#ffffff" roughness={0.35} />
+          </RoundedBox>
+          <mesh position={[-0.24, 0, 0.075]}>
+            <circleGeometry args={[0.08, 24]} />
+            <meshBasicMaterial color={col} toneMapped={false} />
+          </mesh>
+          <mesh position={[0.08, 0.04, 0.075]}>
+            <planeGeometry args={[0.36, 0.05]} />
+            <meshBasicMaterial color={INK} />
+          </mesh>
+          <mesh position={[0.03, -0.05, 0.075]}>
+            <planeGeometry args={[0.26, 0.04]} />
+            <meshBasicMaterial color="#c9cfd8" />
+          </mesh>
+        </group>
+      ))}
+      <mesh ref={pulse}>
+        <sphereGeometry args={[0.05, 16, 16]} />
+        <meshBasicMaterial color={FLAME} toneMapped={false} />
+      </mesh>
+      <Label position={[0, -1.05, 0]}>Automations</Label>
     </group>
   )
 }
@@ -149,28 +172,28 @@ function Server() {
   )
 }
 
-function Chip() {
+function Cloud() {
+  const puffs: [number, number, number, number][] = [
+    [0, 0.12, 0, 0.42],
+    [-0.42, -0.05, 0.02, 0.3],
+    [0.42, -0.04, 0.02, 0.32],
+    [-0.2, -0.16, 0.12, 0.28],
+    [0.2, -0.16, 0.12, 0.28],
+    [0.05, 0.34, -0.05, 0.28],
+  ]
   return (
-    <group rotation={[0.5, 0.3, 0]}>
-      <RoundedBox args={[1.05, 0.12, 1.05]} radius={0.03} smoothness={4}>
-        <meshStandardMaterial color="#14532d" metalness={0.3} roughness={0.6} />
-      </RoundedBox>
-      <RoundedBox args={[0.48, 0.1, 0.48]} radius={0.02} position={[0, 0.1, 0]}>
-        <meshStandardMaterial color={INK} metalness={0.6} roughness={0.3} />
-      </RoundedBox>
-      {Array.from({ length: 16 }).map((_, i) => {
-        const side = Math.floor(i / 4)
-        const k = (i % 4) * 0.1 - 0.15
-        const pos: [number, number, number] =
-          side === 0 ? [k, 0.08, 0.3] : side === 1 ? [k, 0.08, -0.3] : side === 2 ? [0.3, 0.08, k] : [-0.3, 0.08, k]
-        return (
-          <mesh key={i} position={pos}>
-            <boxGeometry args={[0.04, 0.02, 0.04]} />
-            <meshStandardMaterial color="#d4a84a" metalness={1} roughness={0.25} />
-          </mesh>
-        )
-      })}
-      <Label position={[0, -0.55, 0]}>Hardware & robots</Label>
+    <group>
+      {puffs.map(([x, y, z, r], i) => (
+        <mesh key={i} position={[x, y, z]}>
+          <sphereGeometry args={[r, 32, 32]} />
+          <meshStandardMaterial color="#f4f7ff" roughness={0.55} />
+        </mesh>
+      ))}
+      <mesh position={[0, -0.12, 0.42]}>
+        <planeGeometry args={[0.5, 0.06]} />
+        <meshBasicMaterial color={COBALT} />
+      </mesh>
+      <Label position={[0, -0.62, 0]}>Cloud & AWS</Label>
     </group>
   )
 }
@@ -186,16 +209,16 @@ function Core() {
         <torusGeometry args={[0.95, 0.012, 16, 120]} />
         <meshBasicMaterial color={FLAME} toneMapped={false} />
       </mesh>
-      <Label position={[0, 0.98, 0]}>AI</Label>
+      <Label position={[0, 0.98, 0]}>AI agents</Label>
     </group>
   )
 }
 
 const SATS: { id: string; base: THREE.Vector3; el: () => JSX.Element; rot: number }[] = [
-  { id: "phone", base: new THREE.Vector3(-1.95, 0.85, -0.2), el: Phone, rot: 0.35 },
+  { id: "flow", base: new THREE.Vector3(-1.95, 0.8, -0.2), el: Workflow, rot: 0.3 },
   { id: "web", base: new THREE.Vector3(1.85, 1.05, -0.7), el: Browser, rot: -0.35 },
   { id: "server", base: new THREE.Vector3(1.6, -1.2, 0.1), el: Server, rot: -0.5 },
-  { id: "chip", base: new THREE.Vector3(-1.6, -1.2, 0.3), el: Chip, rot: 0.2 },
+  { id: "cloud", base: new THREE.Vector3(-1.6, -1.15, 0.3), el: Cloud, rot: 0.15 },
 ]
 
 function DataStreams({ progress }: { progress: React.MutableRefObject<number> }) {

@@ -14,41 +14,6 @@ function Frame({ children, caption }: { children: React.ReactNode; caption: stri
   )
 }
 
-function ChatPhone() {
-  const msgs = [
-    { me: false, w: "w-[70%]", t: "Namaste! Joined the group 🙏" },
-    { me: true, w: "w-[60%]", t: "Welcome! Story at 8?" },
-    { me: false, w: "w-[55%]", t: "Count me in" },
-    { me: true, w: "w-[66%]", t: "Sharing the link now" },
-  ]
-  return (
-    <div className="flex items-center gap-8">
-      <div className="relative h-[250px] w-[130px] rounded-[26px] border-[5px] border-[#2a313c] bg-[#f5f6f8] p-2 shadow-2xl">
-        <div className="mx-auto mb-2 h-1.5 w-10 rounded-full bg-[#2a313c]" />
-        <div className="flex flex-col gap-1.5">
-          {msgs.map((m, i) => (
-            <div
-              key={i}
-              className={`${m.w} ${m.me ? "self-end bg-flame text-white" : "self-start bg-[#e3e7ee] text-ink"} rounded-xl px-2 py-1 text-[8.5px] leading-tight`}
-              style={{ animation: `bubble 6s ${i * 0.9}s infinite both` }}
-            >
-              {m.t}
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="flex flex-col gap-3">
-        {["Google Play", "App Store"].map((s) => (
-          <div key={s} className="flex items-center gap-2 rounded-xl border border-night-line bg-night px-3 py-2 text-xs text-white">
-            <span className="h-2 w-2 rounded-full bg-mint" style={{ animation: "pulse-ring 2s infinite" }} />
-            Live on {s}
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
 function Flow() {
   const steps = ["Your question", "Finds papers", "Checks each claim", "Answer + sources"]
   const [a, setA] = useState(0)
@@ -190,8 +155,6 @@ function Wave() {
 
 export function ProjectVisual({ id }: { id: Project["id"] }) {
   switch (id) {
-    case "myitihas":
-      return <Frame caption="chat, sign-in, profiles → shipped to both stores"><ChatPhone /></Frame>
     case "sciagent":
       return <Frame caption="every claim is checked against a real paper before you see it"><Flow /></Frame>
     case "customer":

@@ -14,15 +14,17 @@ export function Record() {
         </h2>
       </Reveal>
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {record.map((y, yi) => (
           <Reveal key={y.year} delay={yi * 0.08}>
             <div className="h-full rounded-3xl border border-line bg-surface p-6">
               <div className="mb-5 flex items-baseline justify-between">
-                <span className="font-display text-5xl font-bold tracking-tight text-ink/90">{y.year}</span>
-                <span className="font-mono text-xs text-muted">
-                  {y.items.filter((i) => "win" in i && i.win).length} × 1st
-                </span>
+                <span className="font-display text-4xl font-bold tracking-tight text-ink/90">{y.year}</span>
+                {y.items.some((i) => "win" in i && i.win) && (
+                  <span className="font-mono text-xs text-muted">
+                    {y.items.filter((i) => "win" in i && i.win).length} × 1st
+                  </span>
+                )}
               </div>
               <ul className="flex flex-col gap-4">
                 {y.items.map((it) => (
@@ -51,7 +53,7 @@ export function Record() {
 
 export function About() {
   return (
-    <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-4 pb-24 sm:px-6">
+    <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6">
       <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr]">
         <Reveal>
           <div className="label mb-3 text-flame">About me</div>
@@ -64,8 +66,8 @@ export function About() {
               exchange at Leibniz University Hannover in Germany.
             </p>
             <p>
-              I&apos;ve been building since 2018: over 100 projects, from my first Flutter apps to AI systems and the servers
-              that run them. What I enjoy most is the whole journey: understanding the problem, building it properly,
+              I&apos;ve been building since 2018: over 100 projects, and these days most of them are AI agents and
+              automations, plus the websites and cloud that run them. What I enjoy most is the whole journey: understanding the problem, building it properly,
               and getting it into people&apos;s hands.
             </p>
           </div>

@@ -7,11 +7,11 @@ const sans = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "500"] })
 
 const description =
-  "Developer from IIT Mandi who turns ideas into mobile apps, websites and AI tools. Shipped to the App Store and Google Play, 2× KrackHack champion, runs 50+ websites."
+  "Developer from IIT Mandi building AI agents, workflow automations and websites. 2× KrackHack champion, runs 50+ websites on the cloud."
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sachit-portfolio.vercel.app"),
-  title: "Sachit Bansal: apps, websites & AI tools",
+  title: "Sachit Bansal: AI agents, automation & web",
   description,
   openGraph: {
     title: "Sachit Bansal",

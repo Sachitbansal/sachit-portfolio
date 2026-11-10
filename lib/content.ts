@@ -3,7 +3,7 @@
 
 export const profile = {
   name: "Sachit Bansal",
-  email: "sachitbansal2006@gmail.com",
+  email: "sachitbansaldeveloper@gmail.com",
   location: "Hannover, Germany",
   links: {
     linkedin: "https://linkedin.com/in/sachit-bansal/",
@@ -16,19 +16,19 @@ export const profile = {
 export const cooking = [
   "an AI that reads scientific papers and cites every claim",
   "a live system that spots changing customer behaviour",
-  "chat features for a community app",
+  "automations that do a team's repetitive work for them",
   "tools that turn long podcasts into short clips",
 ]
 
 export const proof = [
   { value: 2, suffix: "×", label: "KrackHack champion", note: "Google Developer Groups hackathon, IIT Mandi" },
-  { value: 2, suffix: "", label: "app stores launched on", note: "Google Play and Apple App Store" },
+  { value: 100, suffix: "+", label: "projects built", note: "since 2018, from AI agents to live data systems" },
   { value: 50, suffix: "+", label: "websites kept running", note: "for 3,000+ students and staff" },
   { value: 9, prefix: "AIR ", suffix: "", label: "out of 15,000+", note: "Shaastra Juniors, IIT Madras" },
 ]
 
 export type Service = {
-  key: "mobile" | "web" | "ai" | "infra"
+  key: "ai" | "automation" | "web" | "cloud"
   title: string
   body: string
   proof: string
@@ -37,32 +37,32 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    key: "mobile",
-    title: "Mobile apps",
-    body: "iPhone and Android apps, from the first screen to the store listing. Chat, sign-in, profiles, notifications.",
-    proof: "MyItihas: live on Google Play and the App Store",
-    tools: "Flutter · Supabase · Firebase",
+    key: "ai",
+    title: "AI assistants & agents",
+    body: "Assistants that answer from your own documents and data, and AI agents that can search, decide and act on their own, with every answer checked against a source.",
+    proof: "SciAgent: backs every answer with a source",
+    tools: "LLMs · AI agents · RAG · LangChain · Hugging Face",
+  },
+  {
+    key: "automation",
+    title: "Workflow automation",
+    body: "The repetitive work your team does by hand (reading, sorting, reporting, following up), turned into workflows that run on their own, around the clock.",
+    proof: "Customer Targeting: decisions update live with every transaction",
+    tools: "Python · Pathway · NATS · Redis · APIs",
   },
   {
     key: "web",
     title: "Websites & web apps",
-    body: "Fast, good-looking websites and dashboards that work on every screen and are easy to keep up to date.",
+    body: "Fast, good-looking websites, dashboards and internal tools that work on every screen and are easy to keep up to date.",
     proof: "Webspark: builds a whole website from one sentence",
     tools: "Next.js · React · Django · FastAPI",
   },
   {
-    key: "ai",
-    title: "AI assistants & automation",
-    body: "Assistants that answer from your own documents, and tools that read, sort and summarise so your team doesn't have to.",
-    proof: "SciAgent: backs every answer with a source",
-    tools: "LLMs · RAG · LangChain · Hugging Face",
-  },
-  {
-    key: "infra",
-    title: "Hosting, servers & security",
-    body: "I set up, deploy and look after the servers, so your product stays online, fast and safe.",
-    proof: "System admin for IIT Mandi's student server",
-    tools: "Docker · AWS · Linux · Cloudflare",
+    key: "cloud",
+    title: "Cloud, hosting & security",
+    body: "I set up the cloud, deploy your product and look after the servers, so it stays online, fast and safe as it grows.",
+    proof: "System admin for 50+ sites on IIT Mandi's student server",
+    tools: "AWS · Docker · Linux · Cloudflare · Vercel",
   },
 ]
 
@@ -70,12 +70,12 @@ export const process = [
   { title: "Talk", body: "A short call. You explain the problem in plain words, and I ask the questions." },
   { title: "Plan", body: "A one-page plan: what we build first, how long it takes, and what success looks like." },
   { title: "Build", body: "I build in short rounds and show you a working version every week." },
-  { title: "Launch", body: "I put it live: app stores, domain, hosting, analytics." },
+  { title: "Launch", body: "I put it live: cloud, domain, hosting, monitoring." },
   { title: "Look after", body: "Fixes, updates and new features once real users arrive." },
 ]
 
 export type Project = {
-  id: "myitihas" | "sciagent" | "customer" | "webspark" | "podclip"
+  id: "sciagent" | "customer" | "webspark" | "podclip"
   name: string
   kind: string
   when: string
@@ -88,17 +88,6 @@ export type Project = {
 }
 
 export const projects: Project[] = [
-  {
-    id: "myitihas",
-    name: "MyItihas",
-    kind: "Mobile app",
-    when: "Dec 2025 – Feb 2026",
-    problem: "A growing community app needed chat and social features, and someone to get it into the app stores.",
-    built: "Private and group chat, sign-in, profiles and followers, plus the backend that stores and searches all of it.",
-    result: "Built end to end and released to Google Play and the App Store by me.",
-    badge: "Live on both stores",
-    tools: "Flutter · Supabase",
-  },
   {
     id: "sciagent",
     name: "SciAgent",
@@ -166,15 +155,20 @@ export const record = [
   {
     year: "2024",
     items: [
+      { title: "Cleared JEE Advanced, joined IIT Mandi", where: "One of India's toughest entrance exams" },
+      { title: "1st place, robot sumo (Takeshi's Castle)", where: "Utkarsh, IIT Mandi", win: true },
+    ],
+  },
+  {
+    year: "Earlier",
+    items: [
       { title: "All India Rank 9 of 15,000+", where: "Shaastra Juniors, IIT Madras" },
       { title: "1st place, Case Study Competition", where: "Shaastra Juniors, IIT Madras", win: true },
-      { title: "1st place, robot sumo (Takeshi's Castle)", where: "Utkarsh, IIT Mandi", win: true },
     ],
   },
 ]
 
 export const roles = [
-  { title: "Flutter App Developer", org: "MyItihas", when: "Dec 2025 – Feb 2026", body: "Owned the app from features to store release." },
   { title: "System Administrator", org: "SAIC, IIT Mandi", when: "Current", body: "Run 50+ websites on the main student server for 3,000+ students and staff: deployments, domains, security." },
   { title: "Tutor", org: "PRAYAS 3.0", when: "", body: "Taught 100+ students hands-on Arduino and machine learning." },
   { title: "Core Team", org: "Kamand Prompt, programming club", when: "", body: "Ran a web development session for 500+ students." },
