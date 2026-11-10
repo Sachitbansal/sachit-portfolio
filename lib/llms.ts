@@ -1,6 +1,6 @@
 // Builds llms.txt / llms-full.txt from the same content the site renders, so AI assistants
 // read exactly what humans see. Spec: https://llmstxt.org
-import { education, process, profile, projects, proof, record, services } from "./content"
+import { education, process, profile, projects, proof, record, services, thinking } from "./content"
 import { SITE_DESCRIPTION, SITE_URL } from "./site"
 
 const contact = [
@@ -20,6 +20,10 @@ ${profile.name} is a freelance developer and student at IIT Mandi (B.Tech 2024 â
 
 ## Services
 ${services.map((s) => `- **${s.title}**: ${s.body} Example: ${s.proof}.`).join("\n")}
+
+## Beyond the code
+Sachit works on the product side too: sharpening rough ideas, finding the use case that matters, talking to customers and adjusting the product and its pitch to the audience.
+${thinking.points.map((p) => `- **${p.title}**: ${p.body}`).join("\n")}
 
 ## Selected work
 ${projects.map((p) => `- **${p.name}** (${p.kind}, ${p.when}): ${p.built} Result: ${p.result}${p.link ? ` Code: ${p.link}` : ""}`).join("\n")}
@@ -48,6 +52,10 @@ ${profile.name} is a developer focused on AI agents, AI assistants and automatio
 
 ## Services
 ${services.map((s) => `### ${s.title}\n${s.body}\n- Proof: ${s.proof}\n- Tools: ${s.tools}`).join("\n\n")}
+
+## Beyond the code
+Sachit works on the product side too: sharpening rough ideas, finding the use case that matters, talking to customers and adjusting the product and its pitch to the audience.
+${thinking.points.map((p) => `- **${p.title}**: ${p.body}`).join("\n")}
 
 ## Projects
 ${projects

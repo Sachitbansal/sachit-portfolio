@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
 import { proof } from "@/lib/content"
-import { CountUp } from "./motion"
+import { CountUp, SceneBoundary } from "./motion"
 
 const Kitchen = dynamic(() => import("./scene/Kitchen"), {
   ssr: false,
@@ -76,7 +76,15 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease }}
         >
-          <Kitchen />
+          <SceneBoundary
+            fallback={
+              <div className="flex h-full items-center justify-center">
+                <div className="h-40 w-40 rounded-full bg-gradient-to-br from-cobalt/30 to-flame/20 blur-2xl" />
+              </div>
+            }
+          >
+            <Kitchen />
+          </SceneBoundary>
         </motion.div>
       </div>
 

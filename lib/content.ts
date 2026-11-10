@@ -172,3 +172,39 @@ export const education = [
   { school: "Leibniz Universität Hannover", detail: "Exchange semester, Computer Science & AI", when: "Oct 2026 – Mar 2027" },
   { school: "IIT Mandi", detail: "B.Tech, General Engineering (AI & Robotics)", when: "2024 – 2028" },
 ]
+
+// The product / people side: shown as how Sachit thinks, not as claimed track record.
+export const thinking = {
+  points: [
+    { title: "Sharpen the idea", body: "I question a rough idea until it's clear what it does, who it's for and why they'd care." },
+    { title: "Find the use case that pays off", body: "Out of ten things it could do, I find the one people would really use, and start there." },
+    { title: "Talk to the people who'll use it", body: "I'm happy on a call with your customers or your team, listening to what they need instead of guessing." },
+    { title: "Shape it for the audience", body: "Features, wording and launch adjusted to who is on the other side: a student, a bank or a shop owner." },
+  ],
+  examples: [
+    {
+      tag: "AI chatbot",
+      rough: "We want an AI chatbot.",
+      who: "A support team answering the same 40 questions every day",
+      pain: "Customers wait hours for answers that take seconds",
+      first: "An assistant that answers from your help docs and hands the hard cases to a person",
+      pitch: "“Answers in 10 seconds, day or night”, not “we use AI”",
+    },
+    {
+      tag: "Gym app",
+      rough: "Can you build an app for our gym?",
+      who: "Members who quietly stop showing up",
+      pain: "The gym only notices when they cancel",
+      first: "A WhatsApp message to anyone who hasn't visited in 10 days. No app to download.",
+      pitch: "Sold to the owner as fewer cancellations",
+    },
+    {
+      tag: "Website",
+      rough: "We need a website.",
+      who: "Local customers searching on their phones",
+      pain: "They can't find prices or book quickly, so they call someone else",
+      first: "One fast page with prices, reviews and a booking button that shows up on Google",
+      pitch: "Measured in bookings, not page views",
+    },
+  ],
+}

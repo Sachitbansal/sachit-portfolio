@@ -46,8 +46,8 @@ export function Contact() {
             Have an idea? Let&apos;s build it.
           </h2>
           <p className="mt-6 max-w-[48ch] text-lg text-white/70">
-            Tell me what you want to make, even if it is only a rough idea. I&apos;ll tell you honestly how I&apos;d build
-            it and how long it would take.
+            Tell me what you want to make, even if it is only a rough idea. I&apos;ll tell you honestly whether it&apos;s
+            worth building, who it&apos;s for, and how I&apos;d build it.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-3">

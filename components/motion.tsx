@@ -2,7 +2,7 @@
 
 import { animate, motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion"
 import Lenis from "lenis"
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 export function SmoothScroll() {
   useEffect(() => {
@@ -88,4 +88,15 @@ export function Tilt({ children, className, max = 6 }: { children: React.ReactNo
       {children}
     </motion.div>
   )
+}
+
+/** Keeps the page alive if a 3D scene fails (old devices, WebGL disabled): renders the fallback instead. */
+export class SceneBoundary extends React.Component<{ children: React.ReactNode; fallback?: React.ReactNode }, { failed: boolean }> {
+  state = { failed: false }
+  static getDerivedStateFromError() {
+    return { failed: true }
+  }
+  render() {
+    return this.state.failed ? (this.props.fallback ?? null) : this.props.children
+  }
 }

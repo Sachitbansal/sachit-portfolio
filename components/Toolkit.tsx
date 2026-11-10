@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion"
 import dynamic from "next/dynamic"
+import { SceneBoundary } from "./motion"
 import { useRef, useState } from "react"
 import {
   siAmazonwebservices, siClaude, siCloudflare, siDjango, siDocker, siFastapi, siFlutter, siGit, siGithub,
@@ -63,7 +64,9 @@ export function Toolkit() {
     <section ref={ref} id="toolkit" data-dark className="relative h-[480vh] rounded-t-[32px] bg-night text-white sm:rounded-t-[56px]">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(47,91,255,0.14),transparent_60%)]" />
-        <Universe stage={stage} stages={stages.map((s) => s.logos)} />
+        <SceneBoundary>
+          <Universe stage={stage} stages={stages.map((s) => s.logos)} />
+        </SceneBoundary>
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-night via-night/90 to-transparent lg:hidden" />
         <div className="relative mx-auto flex h-full max-w-6xl flex-col justify-end px-5 pb-10 pt-24 sm:px-6 lg:justify-center lg:pb-0">

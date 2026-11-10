@@ -53,7 +53,7 @@ const jsonLd = {
       description: SITE_DESCRIPTION,
       address: { "@type": "PostalAddress", addressLocality: "Hannover", addressCountry: "DE" },
       alumniOf: education.map((e) => ({ "@type": "CollegeOrUniversity", name: e.school })),
-      knowsAbout: ["AI agents", "Large language models", "Retrieval-augmented generation", "Workflow automation", "Web development", "Next.js", "Python", "AWS", "Cloud hosting"],
+      knowsAbout: ["AI agents", "Large language models", "Retrieval-augmented generation", "Workflow automation", "Product strategy", "Customer discovery", "Use-case discovery", "Web development", "Next.js", "Python", "AWS", "Cloud hosting"],
       award: ["1st place, KrackHack 3.0 (2026)", "1st place, KrackHack 2.0 (2025)", "1st place, Space Code 2026", "All India Rank 9, Shaastra Juniors, IIT Madras"],
       sameAs: [profile.links.linkedin, profile.links.github, profile.links.x],
     },

@@ -74,8 +74,9 @@ export function About() {
             </p>
             <p>
               I&apos;ve been building since 2018: over 100 projects, and these days most of them are AI agents and
-              automations, plus the websites and cloud that run them. What I enjoy most is the whole journey: understanding the problem, building it properly,
-              and getting it into people&apos;s hands.
+              automations, plus the websites and cloud that run them. I&apos;m as comfortable on a call with your
+              customers as I am in the code. What I enjoy most is the whole journey: understanding the problem, finding
+              who it&apos;s for, building it properly and getting it into people&apos;s hands.
             </p>
           </div>
 
