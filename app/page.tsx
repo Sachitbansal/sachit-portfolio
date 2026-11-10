@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/components/motion"
 import { Nav } from "@/components/Nav"
 import { Process } from "@/components/Process"
 import { Services } from "@/components/Services"
+import { Toolkit } from "@/components/Toolkit"
 import { Work } from "@/components/Work"
 
 export default function Page() {
@@ -15,6 +16,7 @@ export default function Page() {
       <Hero />
       <About />
       <Services />
+      <Toolkit />
       <Work />
       <Process />
       <Record />

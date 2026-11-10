@@ -1,8 +1,15 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { education, record, roles } from "@/lib/content"
-import { Reveal } from "./motion"
+import { cooking, education, profile, record } from "@/lib/content"
+import { Reveal, Tilt } from "./motion"
+
+const now: [string, string][] = [
+  ["Based in", "Hannover, Germany, until March 2027. Home is India."],
+  ["Studying", "Computer Science & AI, exchange at Leibniz Universität Hannover"],
+  ["Building", cooking[0].charAt(0).toUpperCase() + cooking[0].slice(1)],
+  ["Open to", profile.availability],
+]
 
 export function Record() {
   return (
@@ -54,7 +61,7 @@ export function Record() {
 export function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr]">
+      <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
         <Reveal>
           <div className="label mb-3 text-flame">About me</div>
           <h2 className="font-display text-[clamp(32px,4.4vw,52px)] font-bold leading-[1.02] tracking-[-0.03em]">
@@ -86,27 +93,32 @@ export function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="label mb-5 text-muted">Experience &amp; roles</div>
-          <ol className="relative flex flex-col border-l-2 border-line pl-7">
-            {roles.map((r, i) => (
-              <motion.li
-                key={r.title}
-                className="relative pb-8 last:pb-0"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-              >
-                <span className={`absolute -left-[35px] top-1.5 h-3 w-3 rounded-full border-2 ${i === 0 ? "border-flame bg-flame" : "border-ink bg-paper"}`} />
-                <div className="flex flex-wrap items-baseline gap-x-3">
-                  <h3 className="font-display text-xl font-bold">{r.title}</h3>
-                  <span className="text-muted">· {r.org}</span>
+          <Tilt max={4}>
+            <div className="relative overflow-hidden rounded-3xl bg-ink p-7 text-white sm:p-9">
+              <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-cobalt/40 blur-[80px]" />
+              <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-flame/30 blur-[80px]" />
+              <div className="relative">
+                <div className="mb-6 flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-mint" style={{ animation: "pulse-ring 2s infinite" }} />
+                  <span className="label text-[11px] text-white/70">Right now</span>
                 </div>
-                {r.when && <div className="mt-0.5 font-mono text-xs text-muted">{r.when}</div>}
-                <p className="mt-2 text-muted">{r.body}</p>
-              </motion.li>
-            ))}
-          </ol>
+                <dl className="grid gap-5">
+                  {now.map(([k, v]) => (
+                    <div key={k} className="grid gap-1 border-b border-white/10 pb-5 last:border-0 last:pb-0 sm:grid-cols-[130px_1fr] sm:gap-4">
+                      <dt className="font-mono text-xs uppercase tracking-wider text-white/45">{k}</dt>
+                      <dd className="text-white/90">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <a
+                  href="#contact"
+                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-flame px-5 py-3 text-sm font-medium transition-transform hover:scale-[1.03]"
+                >
+                  Start a project →
+                </a>
+              </div>
+            </div>
+          </Tilt>
         </Reveal>
       </div>
     </section>

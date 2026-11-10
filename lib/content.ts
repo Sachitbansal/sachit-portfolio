@@ -168,12 +168,6 @@ export const record = [
   },
 ]
 
-export const roles = [
-  { title: "System Administrator", org: "SAIC, IIT Mandi", when: "Current", body: "Run 50+ websites on the main student server for 3,000+ students and staff: deployments, domains, security." },
-  { title: "Tutor", org: "PRAYAS 3.0", when: "", body: "Taught 100+ students hands-on Arduino and machine learning." },
-  { title: "Core Team", org: "Kamand Prompt, programming club", when: "", body: "Ran a web development session for 500+ students." },
-]
-
 export const education = [
   { school: "Leibniz Universität Hannover", detail: "Exchange semester, Computer Science & AI", when: "Oct 2026 – Mar 2027" },
   { school: "IIT Mandi", detail: "B.Tech, General Engineering (AI & Robotics)", when: "2024 – present" },
