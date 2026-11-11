@@ -123,36 +123,45 @@ export function Services() {
     <section id="services" className="relative mx-auto max-w-6xl scroll-mt-16 py-20 sm:px-6 lg:py-16">
       <Reveal className="mb-8 flex flex-col gap-3 px-5 sm:px-0 md:flex-row md:items-end md:justify-between lg:mb-8">
         <div>
-          <div className="label mb-3 text-flame">What I can do for you</div>
+          <div className="label mb-3 text-flame">Services</div>
           <h2 className="max-w-[18ch] font-display text-[clamp(30px,4vw,48px)] font-bold leading-[1.02] tracking-[-0.03em]">
-            One person for the whole product.
+            What I can build for you.
           </h2>
         </div>
         <p className="max-w-[44ch] text-muted">
-          Most projects need some AI, a few automations, a website and a cloud to run it all. I do all four, so nothing
-          gets lost between different freelancers.
+          Four kinds of solutions, often combined in one project: the AI, the automation around it, the product people
+          use and the infrastructure that keeps it running.
         </p>
       </Reveal>
 
-      {/* phone: swipeable row · tablet & desktop: compact 2×2 that fits one screen */}
+      {/* phone: swipeable row · tablet & desktop: 2×2 grid */}
       <Reveal>
       <div ref={row} className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
         {services.map((s, i) => (
           <div key={s.key} className="w-[82%] shrink-0 snap-start sm:w-auto">
             <Tilt className="h-full" max={3}>
-              <article className="group flex h-full flex-col gap-4 rounded-3xl border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-[0_30px_60px_-30px_rgba(13,16,22,0.25)] lg:flex-row lg:gap-6 lg:p-7">
-                <div className="h-16 w-20 shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 lg:h-20 lg:w-24">
-                  <Glyph k={s.key} />
+              <article className="group flex h-full flex-col rounded-3xl border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-[0_30px_60px_-30px_rgba(16,27,45,0.25)] lg:p-7">
+                <div className="flex items-start gap-4">
+                  <div className="h-14 w-[72px] shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 lg:h-16 lg:w-20">
+                    <Glyph k={s.key} />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-display text-xl font-bold leading-tight tracking-tight lg:text-[22px]">{s.title}</h3>
+                    <p className="mt-1 text-[15px] leading-snug text-muted">{s.tagline}</p>
+                  </div>
                 </div>
-                <div className="flex min-w-0 flex-1 flex-col gap-2">
-                  <h3 className="font-display text-xl font-bold leading-tight tracking-tight lg:text-[22px]">{s.title}</h3>
-                  <p className="text-[15px] leading-relaxed text-muted">{s.body}</p>
-                  <div className="mt-auto flex flex-col gap-1.5 border-t border-line pt-3">
-                    <div className="flex items-start gap-2 text-sm font-medium leading-snug">
-                      <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-flame" />
-                      {s.proof}
-                    </div>
-                    <div className="font-mono text-[11px] leading-relaxed text-muted">{s.tools}</div>
+                <ul className="mt-5 grid gap-1.5">
+                  {s.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2.5 text-[14px] leading-snug">
+                      <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-flame" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto pt-5">
+                  <div className="rounded-2xl bg-paper px-4 py-3 text-[13px] leading-snug text-muted">
+                    <span className="mr-1.5 font-mono text-[10px] uppercase tracking-wider text-flame">Example</span>
+                    {s.example}
                   </div>
                 </div>
               </article>

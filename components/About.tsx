@@ -1,125 +1,123 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { cooking, education, record } from "@/lib/content"
-import { Reveal, Tilt } from "./motion"
+import { motion, useScroll } from "framer-motion"
+import { useRef } from "react"
+import { achievements, education, journey, leadership } from "@/lib/content"
+import { Reveal } from "./motion"
 
-const now: [string, string][] = [
-  ["Based in", "Hannover, Germany, until March 2027. Home is India."],
-  ["Studying", "Computer Science & AI, exchange at Leibniz Universität Hannover"],
-  ["Building", cooking[0].charAt(0).toUpperCase() + cooking[0].slice(1)],
-  ["Open to", "Freelance projects, internships and Werkstudent roles"],
-]
+export function Journey() {
+  const ref = useRef<HTMLOListElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 75%", "end 55%"] })
 
-export function Record() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-      <Reveal className="mb-12">
-        <div className="label mb-3 text-flame">Track record</div>
-        <h2 className="max-w-[18ch] font-display text-[clamp(32px,4.4vw,52px)] font-bold leading-[1.02] tracking-[-0.03em]">
-          Tested against the best, and usually on top.
-        </h2>
-      </Reveal>
-
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {record.map((y, yi) => (
-          <Reveal key={y.year} delay={yi * 0.08}>
-            <div className="h-full rounded-3xl border border-line bg-surface p-6">
-              <div className="mb-5 flex items-baseline justify-between">
-                <span className="font-display text-4xl font-bold tracking-tight text-ink/90">{y.year}</span>
-                {y.items.some((i) => "win" in i && i.win) && (
-                  <span className="font-mono text-xs text-muted">
-                    {y.items.filter((i) => "win" in i && i.win).length} × 1st
-                  </span>
-                )}
-              </div>
-              <ul className="flex flex-col gap-4">
-                {y.items.map((it) => (
-                  <li key={it.title} className="flex gap-3">
-                    <span
-                      className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] ${
-                        "win" in it && it.win ? "bg-flame text-white" : "bg-paper text-muted"
-                      }`}
-                    >
-                      {"win" in it && it.win ? "1" : "•"}
-                    </span>
-                    <div>
-                      <div className="font-medium leading-snug">{it.title}</div>
-                      <div className="text-sm text-muted">{it.where}</div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+    <section id="journey" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-24 sm:px-6">
+      <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div>
+          <Reveal className="lg:sticky lg:top-28">
+            <div className="label mb-3 text-flame">The story behind the builder</div>
+            <h2 className="max-w-[14ch] font-display text-[clamp(32px,4.4vw,52px)] font-bold leading-[1.02] tracking-[-0.03em]">
+              Curious by nature. Driven to create.
+            </h2>
+            <div className="mt-6 flex max-w-[46ch] flex-col gap-4 text-[17px] leading-relaxed text-muted">
+              <p>
+                Technology was never just a subject to study. It was something I wanted to understand, experiment with
+                and build.
+              </p>
+              <p>
+                I wasn&apos;t learning because it was part of a curriculum. I was learning because I wanted to turn ideas
+                into something real.
+              </p>
             </div>
+            <blockquote className="mt-8 hidden max-w-[44ch] border-l-2 border-flame pl-4 font-display text-lg font-medium leading-snug lg:block">
+              Curiosity isn&apos;t just about asking questions. It&apos;s having the courage to explore the answers, and
+              the ability to build something from what you discover.
+            </blockquote>
           </Reveal>
-        ))}
+        </div>
+
+        <ol ref={ref} className="relative flex flex-col gap-8 pl-10">
+          <div className="absolute bottom-2 left-[11px] top-2 w-[2px] bg-line">
+            <motion.div className="h-full w-full origin-top bg-flame" style={{ scaleY: scrollYProgress }} />
+          </div>
+          {journey.map((j, i) => (
+            <motion.li
+              key={j.title}
+              className="relative"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span
+                className={`absolute -left-10 top-1 flex h-6 w-6 items-center justify-center rounded-full border-2 bg-paper ${
+                  i === journey.length - 1 ? "border-flame bg-flame" : "border-flame"
+                }`}
+              >
+                <span className={`h-1.5 w-1.5 rounded-full ${i === journey.length - 1 ? "bg-white" : "bg-flame"}`} />
+              </span>
+              <div className="font-mono text-[11px] uppercase tracking-wider text-flame">{j.when}</div>
+              <h3 className="mt-1 font-display text-xl font-bold leading-tight">{j.title}</h3>
+              <p className="mt-1.5 max-w-[52ch] text-[15px] leading-relaxed text-muted">{j.body}</p>
+            </motion.li>
+          ))}
+        </ol>
+
+        <blockquote className="border-l-2 border-flame pl-4 font-display text-lg font-medium leading-snug lg:hidden">
+          Curiosity isn&apos;t just about asking questions. It&apos;s having the courage to explore the answers, and the
+          ability to build something from what you discover.
+        </blockquote>
       </div>
     </section>
   )
 }
 
-export function About() {
+export function Credentials() {
   return (
-    <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6">
-      <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
-        <Reveal>
-          <div className="label mb-3 text-flame">About me</div>
-          <h2 className="font-display text-[clamp(32px,4.4vw,52px)] font-bold leading-[1.02] tracking-[-0.03em]">
-            Hi, I&apos;m Sachit.
-          </h2>
-          <div className="mt-6 flex max-w-[52ch] flex-col gap-4 text-[17px] leading-relaxed text-muted">
-            <p>
-              I study engineering at IIT Mandi, specialising in AI and robotics, and I&apos;m spending this semester on
-              exchange at Leibniz University Hannover in Germany.
-            </p>
-            <p>
-              I&apos;ve been building since 2018: over 100 projects, and these days most of them are AI agents and
-              automations, plus the websites and cloud that run them. I&apos;m as comfortable on a call with your
-              customers as I am in the code. What I enjoy most is the whole journey: understanding the problem, finding
-              who it&apos;s for, building it properly and getting it into people&apos;s hands.
-            </p>
-          </div>
+    <section id="credentials" className="mx-auto max-w-6xl scroll-mt-20 px-5 pb-24 pt-4 sm:px-6">
+      <Reveal className="mb-10">
+        <div className="label mb-3 text-flame">Credentials & recognition</div>
+        <h2 className="max-w-[18ch] font-display text-[clamp(32px,4.4vw,52px)] font-bold leading-[1.02] tracking-[-0.03em]">
+          Education, wins and responsibility.
+        </h2>
+      </Reveal>
 
-          <div className="mt-8 flex flex-col gap-3">
-            {education.map((e) => (
-              <div key={e.school} className="flex flex-wrap items-baseline justify-between gap-x-4 rounded-2xl border border-line bg-surface px-5 py-4">
-                <div>
-                  <div className="font-medium">{e.school}</div>
-                  <div className="text-sm text-muted">{e.detail}</div>
-                </div>
-                <div className="font-mono text-xs text-muted">{e.when}</div>
-              </div>
-            ))}
+      <div className="grid gap-4 lg:grid-cols-[1fr_1.15fr]">
+        <Reveal className="flex flex-col gap-4">
+          {education.map((e) => (
+            <div key={e.school} className="rounded-3xl border border-line bg-surface p-6">
+              <div className="font-mono text-xs text-muted">{e.when}</div>
+              <div className="mt-2 font-display text-xl font-bold leading-tight">{e.school}</div>
+              <div className="mt-1 text-[15px] text-muted">{e.detail}</div>
+            </div>
+          ))}
+          <div className="relative overflow-hidden rounded-3xl bg-ink p-6 text-white">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-flame/40 blur-[70px]" />
+            <div className="label relative mb-4 text-[11px] text-white/50">Selected achievements</div>
+            <ul className="relative grid gap-3">
+              {achievements.map((a) => (
+                <li key={a.title} className="flex gap-3">
+                  <span className="mt-[3px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-flame text-[10px]">★</span>
+                  <div>
+                    <div className="font-medium leading-snug">{a.title}</div>
+                    <div className="text-sm text-white/50">{a.where}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <Tilt max={4}>
-            <div className="relative overflow-hidden rounded-3xl bg-ink p-7 text-white sm:p-9">
-              <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-cobalt/40 blur-[80px]" />
-              <div className="pointer-events-none absolute -bottom-20 -left-10 h-48 w-48 rounded-full bg-flame/30 blur-[80px]" />
-              <div className="relative">
-                <div className="mb-6 flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-mint" style={{ animation: "pulse-ring 2s infinite" }} />
-                  <span className="label text-[11px] text-white/70">Right now</span>
-                </div>
-                <dl className="grid gap-5">
-                  {now.map(([k, v]) => (
-                    <div key={k} className="grid gap-1 border-b border-white/10 pb-5 last:border-0 last:pb-0 sm:grid-cols-[130px_1fr] sm:gap-4">
-                      <dt className="font-mono text-xs uppercase tracking-wider text-white/45">{k}</dt>
-                      <dd className="text-white/90">{v}</dd>
-                    </div>
-                  ))}
-                </dl>
-                <a
-                  href="#contact"
-                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-flame px-5 py-3 text-sm font-medium transition-transform hover:scale-[1.03]"
-                >
-                  Start a project →
-                </a>
+        <Reveal delay={0.1} className="flex flex-col gap-4">
+          <div className="label px-1 pt-1 text-[11px] text-muted">Leadership & contribution</div>
+          {leadership.map((l) => (
+            <div key={l.role} className="rounded-3xl border border-line bg-surface p-6">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                <div className="font-display text-xl font-bold leading-tight">{l.role}</div>
+                <div className="font-mono text-xs text-flame">{l.org}</div>
               </div>
+              <p className="mt-2 text-[15px] leading-relaxed text-muted">{l.body}</p>
             </div>
-          </Tilt>
+          ))}
         </Reveal>
       </div>
     </section>

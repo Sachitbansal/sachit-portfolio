@@ -1,19 +1,20 @@
+import { Analytics } from "@vercel/analytics/react"
 import type { Metadata, Viewport } from "next"
-import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google"
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google"
 import { education, profile, services } from "@/lib/content"
 import { SITE_DESCRIPTION, SITE_URL } from "@/lib/site"
 import "./globals.css"
 
-const display = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-display", weight: ["500", "600", "700", "800"] })
+const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", weight: ["500", "600", "700"] })
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "500"] })
 
 const description =
-  "Developer from IIT Mandi building AI agents, workflow automations and websites. 2× KrackHack champion, runs 50+ websites on the cloud."
+  "AI engineer from IIT Mandi building agentic AI systems, intelligent automations and AI-powered applications, from concept to deployment. 2× KrackHack champion."
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "Sachit Bansal: AI agents, automation & web", template: "%s · Sachit Bansal" },
+  title: { default: "Sachit Bansal: AI Engineer, Agentic AI & Intelligent Automation", template: "%s · Sachit Bansal" },
   description,
   applicationName: "Sachit Bansal",
   authors: [{ name: profile.name, url: SITE_URL }],
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   openGraph: {
-    title: "Sachit Bansal: AI agents, automation & web",
+    title: "Sachit Bansal: AI Engineer, Agentic AI & Intelligent Automation",
     description,
     url: SITE_URL,
     siteName: "Sachit Bansal",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     firstName: "Sachit",
     lastName: "Bansal",
   },
-  twitter: { card: "summary_large_image", title: "Sachit Bansal: AI agents, automation & web", description, creator: "@sachitbansal20" },
+  twitter: { card: "summary_large_image", title: "Sachit Bansal: AI Engineer, Agentic AI & Intelligent Automation", description, creator: "@sachitbansal20" },
   other: { "llms-txt": `${SITE_URL}/llms.txt` },
 }
 
@@ -49,7 +50,7 @@ const jsonLd = {
       url: SITE_URL,
       image: `${SITE_URL}/opengraph-image`,
       email: `mailto:${profile.email}`,
-      jobTitle: "AI agents & automation developer",
+      jobTitle: "AI Engineer",
       description: SITE_DESCRIPTION,
       address: { "@type": "PostalAddress", addressLocality: "Hannover", addressCountry: "DE" },
       alumniOf: education.map((e) => ({ "@type": "CollegeOrUniversity", name: e.school })),
@@ -60,14 +61,14 @@ const jsonLd = {
     {
       "@type": "ProfessionalService",
       "@id": `${SITE_URL}/#service`,
-      name: "Sachit Bansal: AI agents, automation & web",
+      name: "Sachit Bansal: AI Engineer, Agentic AI & Intelligent Automation",
       url: SITE_URL,
       provider: { "@id": `${SITE_URL}/#person` },
       areaServed: "Worldwide",
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Services",
-        itemListElement: services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title, description: s.body } })),
+        itemListElement: services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.title, description: `${s.tagline} ${s.bullets.join("; ")}.` } })),
       },
     },
     {
@@ -81,7 +82,7 @@ const jsonLd = {
   ],
 }
 
-export const viewport: Viewport = { themeColor: "#eef0f3" }
+export const viewport: Viewport = { themeColor: "#f5f7fa" }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -89,6 +90,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
         {children}
+        <Analytics />
       </body>
     </html>
   )

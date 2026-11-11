@@ -19,10 +19,10 @@ import { createContext, useContext, useEffect, useMemo, useRef, useState } from 
 const Compact = createContext(false)
 import * as THREE from "three"
 
-const FLAME = "#ff5a1f"
-const COBALT = "#2f5bff"
+const FLAME = "#377dff"
+const COBALT = "#35c6d9"
 const MINT = "#12b07a"
-const INK = "#0d1016"
+const INK = "#101b2d"
 
 function useCanvasTexture(w: number, h: number, draw: (c: CanvasRenderingContext2D) => void) {
   return useMemo(() => {
@@ -111,7 +111,7 @@ function Workflow() {
 function Browser() {
   const screen = useCanvasTexture(512, 320, (c) => {
     rr(c, 0, 0, 512, 320, 0, "#ffffff")
-    rr(c, 0, 0, 512, 34, 0, "#eef0f3")
+    rr(c, 0, 0, 512, 34, 0, "#f5f7fa")
     ;["#ff6b6b", "#ffc145", MINT].forEach((col, i) => {
       c.fillStyle = col
       c.beginPath()
@@ -123,7 +123,7 @@ function Browser() {
     rr(c, 32, 124, 200, 14, 6, "#c9cfd8")
     rr(c, 32, 160, 110, 34, 17, FLAME)
     rr(c, 290, 60, 190, 140, 14, COBALT)
-    ;[0, 1, 2].forEach((i) => rr(c, 32 + i * 152, 228, 136, 70, 10, "#eef0f3"))
+    ;[0, 1, 2].forEach((i) => rr(c, 32 + i * 152, 228, 136, 70, 10, "#f5f7fa"))
   })
   return (
     <group>

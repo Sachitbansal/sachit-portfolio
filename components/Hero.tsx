@@ -1,8 +1,9 @@
 "use client"
 
+import { track } from "@vercel/analytics"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
-import { proof } from "@/lib/content"
+import { credibility, highlights, identity, proof } from "@/lib/content"
 import { CountUp, SceneBoundary } from "./motion"
 
 const Kitchen = dynamic(() => import("./scene/Kitchen"), {
@@ -17,19 +18,30 @@ const Kitchen = dynamic(() => import("./scene/Kitchen"), {
 const ease = [0.22, 1, 0.36, 1] as const
 
 export function Hero() {
-  const words = ["I", "turn", "ideas", "into", "AI", "agents,", "automations", "and", "websites", "people", "actually", "use."]
+  const words = ["I", "build", "AI", "agents", "&", "automations", "that", "turn", "complex", "problems", "into", "working", "solutions."]
+  const accent = new Set([2, 3, 4, 5])
   return (
-    <section id="top" className="grain relative overflow-hidden pt-24 sm:pt-32">
+    <section id="top" className="grain relative overflow-hidden pt-24 sm:pt-28">
       <div className="pointer-events-none absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-cobalt/10 blur-[120px]" />
       <div className="pointer-events-none absolute -left-40 top-[40%] h-[420px] w-[420px] rounded-full bg-flame/10 blur-[120px]" />
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-2 px-5 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-6">
         <div className="relative z-10">
-          <h1 className="font-display text-[clamp(40px,5.6vw,66px)] font-bold leading-[0.98] tracking-[-0.035em]">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease }}
+            className="mb-5 flex flex-wrap items-center gap-x-2 gap-y-1"
+          >
+            <span className="font-display text-sm font-semibold">Sachit Bansal</span>
+            <span className="h-1 w-1 rounded-full bg-muted/50" />
+            <span className="font-mono text-[11px] uppercase tracking-wider text-muted">{identity}</span>
+          </motion.div>
+          <h1 className="font-display text-[clamp(34px,4.1vw,52px)] font-bold leading-[1.04] tracking-[-0.035em]">
             {words.map((w, i) => (
               <motion.span
                 key={i}
-                className={`mr-[0.22em] inline-block ${w === "AI" ? "text-cobalt" : ""} ${w === "use." ? "text-flame" : ""}`}
+                className={`mr-[0.22em] inline-block ${accent.has(i) ? "text-flame" : ""}`}
                 initial={{ opacity: 0, y: 40, rotateX: -60 }}
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 + i * 0.05, ease }}
@@ -46,27 +58,57 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.75, ease }}
             className="mt-5 max-w-[54ch] text-base leading-relaxed text-muted sm:mt-6 sm:text-[17px]"
           >
-            I&apos;m Sachit, a developer from IIT Mandi. I build AI that does real work: assistants that answer from your
-            own data, and automations that take the repetitive jobs off your team. I launch it, host it and keep it
-            running.
+            <span className="font-medium text-ink">
+              Businesses don&apos;t need another AI experiment. They need technology that solves actual problems.
+            </span>{" "}
+            I build agentic AI systems, intelligent automations and AI-powered applications that help teams work smarter,
+            make better decisions and eliminate repetitive work, from concept to deployment.
           </motion.p>
+
+          <motion.ul
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.85, ease }}
+            className="mt-5 flex flex-wrap gap-1.5"
+          >
+            {highlights.map((h) => (
+              <li key={h} className="rounded-full border border-line bg-surface px-2.5 py-1 font-mono text-[11px] text-muted">
+                {h}
+              </li>
+            ))}
+          </motion.ul>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.9, ease }}
+            transition={{ duration: 0.7, delay: 0.95, ease }}
             className="mt-7 flex flex-wrap items-center gap-3 sm:mt-8"
           >
             <a
               href="#contact"
+              onClick={() => track("cta_click", { where: "hero" })}
               className="group inline-flex items-center gap-2 rounded-full bg-flame px-6 py-3.5 font-medium text-white shadow-[0_10px_30px_-10px_var(--flame)] transition-transform hover:scale-[1.03] active:scale-95"
             >
-              Start a project
+              Let&apos;s discuss your project
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a href="#work" className="rounded-full border border-line bg-surface px-6 py-3.5 font-medium transition-colors hover:border-ink">
-              See my work
+              Explore my work
             </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 1.05, ease }}
+            className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-muted"
+          >
+            {credibility.map((c, i) => (
+              <span key={c} className="flex items-center gap-3">
+                {i > 0 && <span className="h-1 w-1 rounded-full bg-muted/40" />}
+                {c}
+              </span>
+            ))}
           </motion.div>
         </div>
 

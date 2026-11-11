@@ -1,6 +1,6 @@
 // Builds llms.txt / llms-full.txt from the same content the site renders, so AI assistants
 // read exactly what humans see. Spec: https://llmstxt.org
-import { education, process, profile, projects, proof, record, services, thinking } from "./content"
+import { achievements, education, identity, journey, leadership, process, profile, projects, proof, services, thinking } from "./content"
 import { SITE_DESCRIPTION, SITE_URL } from "./site"
 
 const contact = [
@@ -8,7 +8,7 @@ const contact = [
   `- LinkedIn: ${profile.links.linkedin}`,
   `- GitHub: ${profile.links.github}`,
   `- X: ${profile.links.x}`,
-  `- Based in: ${profile.location} (works remotely with teams anywhere)`,
+  `- Based in: ${profile.location} (available for remote collaboration internationally)`,
 ].join("\n")
 
 export function llmsTxt() {
@@ -16,17 +16,17 @@ export function llmsTxt() {
 
 > ${SITE_DESCRIPTION}
 
-${profile.name} is a freelance developer and student at IIT Mandi (B.Tech 2024 – 2028), currently on an exchange semester at Leibniz Universität Hannover, Germany. Sachit builds AI assistants that answer from a company's own documents, AI agents that act on their own, workflow automations that remove repetitive manual work, and fast websites, then deploys and maintains them on the cloud (AWS, Docker, Linux, Cloudflare, Vercel).
+${profile.name}: ${identity}. Studies at IIT Mandi (B.Tech 2024 – 2028, AI & Robotics) and is on an exchange semester at Leibniz University Hannover, Germany. Builds agentic AI systems, intelligent automations and AI-powered applications, and takes them from concept to deployment.
 
-## Services
-${services.map((s) => `- **${s.title}**: ${s.body} Example: ${s.proof}.`).join("\n")}
-
-## Beyond the code
-Sachit works on the product side too: sharpening rough ideas, finding the use case that matters, talking to customers and adjusting the product and its pitch to the audience.
+## Why work with Sachit
+${thinking.intro}
 ${thinking.points.map((p) => `- **${p.title}**: ${p.body}`).join("\n")}
 
-## Selected work
-${projects.map((p) => `- **${p.name}** (${p.kind}, ${p.when}): ${p.built} Result: ${p.result}${p.link ? ` Code: ${p.link}` : ""}`).join("\n")}
+## Services
+${services.map((s) => `- **${s.title}**: ${s.tagline} ${s.bullets.join("; ")}.`).join("\n")}
+
+## Selected engineering work
+${projects.map((p) => `- **${p.name}** (${p.kind}, ${p.when}): ${p.headline} ${p.engineered}${p.validation ? ` Validation: ${p.validation.join("; ")}.` : ""}${p.link ? ` Code: ${p.link}` : ""}`).join("\n")}
 
 ## Highlights
 ${proof.map((p) => `- ${p.prefix ?? ""}${p.value}${p.suffix} ${p.label} (${p.note})`).join("\n")}
@@ -35,7 +35,7 @@ ${proof.map((p) => `- ${p.prefix ?? ""}${p.value}${p.suffix} ${p.label} (${p.not
 ${contact}
 
 ## Optional
-- [Full profile](${SITE_URL}/llms-full.txt): services, projects, process, education and awards in detail
+- [Full profile](${SITE_URL}/llms-full.txt): services, case studies, journey, credentials and process in detail
 - [Website](${SITE_URL})
 `
 }
@@ -46,33 +46,39 @@ export function llmsFullTxt() {
 > ${SITE_DESCRIPTION}
 
 Website: ${SITE_URL}
+Role: ${identity}
 
-## About
-${profile.name} is a developer focused on AI agents, AI assistants and automation. Sachit studies at IIT Mandi, India (B.Tech, 2024 – 2028) and is on an exchange semester in Computer Science & AI at Leibniz Universität Hannover, Germany (Oct 2026 – Mar 2027). Sachit has built 100+ projects since 2018 and keeps 50+ websites running on the cloud for 3,000+ students and staff at IIT Mandi. Sachit is open to freelance projects, internships and Werkstudent roles.
+## Why work with Sachit: ${thinking.title}
+${thinking.intro}
+${thinking.points.map((p, i) => `${i + 1}. **${p.title}**: ${p.body}`).join("\n")}
+
+${thinking.closing}
 
 ## Services
-${services.map((s) => `### ${s.title}\n${s.body}\n- Proof: ${s.proof}\n- Tools: ${s.tools}`).join("\n\n")}
+${services.map((s) => `### ${s.title}\n${s.tagline}\n${s.bullets.map((b) => `- ${b}`).join("\n")}\n- Example: ${s.example}`).join("\n\n")}
 
-## Beyond the code
-Sachit works on the product side too: sharpening rough ideas, finding the use case that matters, talking to customers and adjusting the product and its pitch to the audience.
-${thinking.points.map((p) => `- **${p.title}**: ${p.body}`).join("\n")}
-
-## Projects
+## Engineering case studies
 ${projects
   .map(
     (p) =>
-      `### ${p.name}: ${p.kind} (${p.when})\n- Problem: ${p.problem}\n- What was built: ${p.built}\n- Result: ${p.result}\n- Tools: ${p.tools}${p.link ? `\n- Source: ${p.link}` : ""}`,
+      `### ${p.name}: ${p.headline}\n${p.kind}, ${p.when}\n- Challenge: ${p.challenge}\n- What was engineered: ${p.engineered}\n${p.components.map((c) => `  - ${c}`).join("\n")}${p.validation ? `\n- Validation: ${p.validation.join("; ")}` : ""}\n- What it demonstrates: ${p.demonstrates}\n- Technology: ${p.tools}${p.link ? `\n- Source: ${p.link}` : ""}`,
   )
   .join("\n\n")}
 
-## How a project works
-${process.map((s, i) => `${i + 1}. **${s.title}**: ${s.body}`).join("\n")}
-
-## Awards and milestones
-${record.map((r) => `### ${r.year}\n${r.items.map((it) => `- ${it.title} (${it.where})`).join("\n")}`).join("\n\n")}
+## Journey
+${journey.map((j) => `- **${j.when}, ${j.title}**: ${j.body}`).join("\n")}
 
 ## Education
 ${education.map((e) => `- ${e.school}: ${e.detail}, ${e.when}`).join("\n")}
+
+## Achievements
+${achievements.map((a) => `- ${a.title} (${a.where})`).join("\n")}
+
+## Leadership and contribution
+${leadership.map((l) => `- **${l.role}, ${l.org}**: ${l.body}`).join("\n")}
+
+## How a project works
+${process.map((s, i) => `${i + 1}. **${s.title}**: ${s.body}`).join("\n")}
 
 ## Contact
 ${contact}

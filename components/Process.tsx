@@ -11,12 +11,12 @@ export function Process() {
   const fill = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   return (
-    <section id="process" data-dark className="bg-night text-white">
-      <div className="mx-auto max-w-6xl scroll-mt-24 px-4 pb-28 pt-8 sm:px-6">
+    <section id="process" data-dark className="rounded-[32px] bg-night text-white sm:rounded-[56px]">
+      <div className="mx-auto max-w-6xl scroll-mt-24 px-4 pb-28 pt-24 sm:px-6">
         <Reveal className="mb-14">
-          <div className="label mb-3 text-flame">How a project goes</div>
+          <div className="label mb-3 text-flame">How I work</div>
           <h2 className="max-w-[20ch] font-display text-[clamp(32px,4.4vw,52px)] font-bold leading-[1.02] tracking-[-0.03em]">
-            No jargon. No surprises. A working version every week.
+            From an idea to a working solution.
           </h2>
         </Reveal>
 
@@ -50,6 +50,11 @@ export function Process() {
             ))}
           </ol>
         </div>
+        <Reveal className="mt-14">
+          <p className="font-display text-xl font-medium text-white/85 sm:text-2xl">
+            Clear communication, practical engineering and a focus on delivery.
+          </p>
+        </Reveal>
       </div>
     </section>
   )

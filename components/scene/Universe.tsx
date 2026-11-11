@@ -10,8 +10,8 @@ import * as THREE from "three"
 
 export type Logo = { path: string; title: string }
 
-const COBALT = new THREE.Color("#4f7bff")
-const FLAME = new THREE.Color("#ff6a33")
+const COBALT = new THREE.Color("#4f8dff")
+const FLAME = new THREE.Color("#45d6e8")
 const MINT = new THREE.Color("#2fd39b")
 
 // ---------- shape samplers ----------
@@ -205,8 +205,8 @@ function logoTexture(path: string) {
   const cv = document.createElement("canvas")
   cv.width = cv.height = s
   const c = cv.getContext("2d")!
-  c.fillStyle = "#131820"
-  c.strokeStyle = "#2a3442"
+  c.fillStyle = "#101b2d"
+  c.strokeStyle = "#24344e"
   c.lineWidth = 4
   c.beginPath()
   c.arc(s / 2, s / 2, s / 2 - 4, 0, Math.PI * 2)

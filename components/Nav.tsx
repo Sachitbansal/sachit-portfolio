@@ -4,9 +4,10 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion"
 import { useState } from "react"
 
 const links = [
-  ["About", "#about"],
+  ["Why me", "#why"],
   ["Services", "#services"],
   ["Work", "#work"],
+  ["Journey", "#journey"],
   ["Process", "#process"],
 ]
 
@@ -33,7 +34,7 @@ export function Nav() {
             ? "border-transparent"
             : dark
               ? "border-night-line bg-night/75 text-white backdrop-blur-xl"
-              : "border-line bg-surface/80 shadow-[0_8px_30px_rgba(13,16,22,0.06)] backdrop-blur-xl"
+              : "border-line bg-surface/80 shadow-[0_8px_30px_rgba(16,27,45,0.06)] backdrop-blur-xl"
         }`}
       >
         <a href="#top" className="font-display text-[17px] font-bold tracking-tight">

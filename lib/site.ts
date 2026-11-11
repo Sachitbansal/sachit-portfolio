@@ -3,4 +3,4 @@
 export const SITE_URL = "https://sachitbansal.sbssdigital.com"
 
 export const SITE_DESCRIPTION =
-  "Sachit Bansal is a developer from IIT Mandi who builds AI agents, AI assistants, workflow automations and websites, and hosts them on the cloud. 2× KrackHack champion, runs 50+ websites. Available for freelance projects, internships and Werkstudent roles."
+  "Sachit Bansal is an AI engineer from IIT Mandi who builds agentic AI systems, intelligent automations and AI-powered applications, and takes them from concept to deployment. 2× KrackHack champion; administers 50+ websites for 3,000+ users. Available for freelance projects, internships and Werkstudent roles."

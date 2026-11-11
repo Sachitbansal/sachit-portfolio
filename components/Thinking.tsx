@@ -26,7 +26,7 @@ function Sharpener() {
   const ex = thinking.examples[i]
 
   return (
-    <div ref={box} onMouseEnter={() => setAuto(false)} className="relative overflow-hidden rounded-[28px] bg-ink p-5 text-white shadow-[0_40px_80px_-40px_rgba(13,16,22,0.6)] sm:p-7">
+    <div ref={box} onMouseEnter={() => setAuto(false)} className="relative overflow-hidden rounded-[28px] bg-ink p-5 text-white shadow-[0_40px_80px_-40px_rgba(16,27,45,0.6)] sm:p-7">
       <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cobalt/25 blur-[80px]" />
       <div className="relative">
         <div className="label mb-3 text-white/50">How I&apos;d take a rough idea</div>
@@ -87,28 +87,28 @@ function Sharpener() {
 
 export function Thinking() {
   return (
-    <section id="thinking" className="mx-auto max-w-6xl scroll-mt-16 px-5 pb-24 pt-8 sm:px-6 lg:pt-12">
+    <section id="why" className="mx-auto max-w-6xl scroll-mt-16 px-5 pb-24 pt-8 sm:px-6 lg:pt-12">
       <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-14">
         <Reveal>
-          <div className="label mb-3 text-flame">Beyond the code</div>
-          <h2 className="max-w-[16ch] font-display text-[clamp(30px,4vw,48px)] font-bold leading-[1.02] tracking-[-0.03em]">
-            Before I build anything, I find out who it&apos;s for.
+          <div className="label mb-3 text-flame">Why work with me</div>
+          <h2 className="max-w-[16ch] font-display text-[clamp(30px,4vw,48px)] font-bold leading-[1.04] tracking-[-0.03em]">
+            {thinking.title}
           </h2>
-          <p className="mt-5 max-w-[46ch] text-[17px] leading-relaxed text-muted">
-            I don&apos;t just take a spec and code it. I&apos;ll question the idea, find who it really helps, talk to
-            your users and help you decide how to pitch it. The code comes after that.
-          </p>
-          <div className="mt-8 grid gap-x-6 gap-y-5 sm:grid-cols-2">
+          <p className="mt-5 max-w-[46ch] text-[17px] leading-relaxed text-muted">{thinking.intro}</p>
+          <ol className="mt-8 flex flex-col gap-5">
             {thinking.points.map((p, n) => (
-              <div key={p.title} className="flex gap-3">
-                <span className="mt-0.5 font-mono text-xs text-flame">0{n + 1}</span>
+              <li key={p.title} className="flex gap-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-flame/40 font-mono text-xs text-flame">
+                  0{n + 1}
+                </span>
                 <div>
                   <h3 className="font-display text-lg font-bold leading-tight">{p.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{p.body}</p>
+                  <p className="mt-1 text-[15px] leading-relaxed text-muted">{p.body}</p>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
+          <p className="mt-8 border-l-2 border-flame pl-4 font-display text-lg font-medium leading-snug">{thinking.closing}</p>
         </Reveal>
         <Reveal delay={0.1}>
           <Sharpener />
