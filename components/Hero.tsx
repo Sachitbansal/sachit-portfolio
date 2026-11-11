@@ -3,7 +3,7 @@
 import { track } from "@vercel/analytics"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
-import { credibility, highlights, identity, proof } from "@/lib/content"
+import { credibility, origin, proof } from "@/lib/content"
 import { CountUp, SceneBoundary } from "./motion"
 
 const Kitchen = dynamic(() => import("./scene/Kitchen"), {
@@ -21,22 +21,12 @@ export function Hero() {
   const words = ["I", "build", "AI", "agents", "&", "automations", "that", "turn", "complex", "problems", "into", "working", "solutions."]
   const accent = new Set([2, 3, 4, 5])
   return (
-    <section id="top" className="grain relative overflow-hidden pt-24 sm:pt-28">
+    <section id="top" className="grain relative overflow-hidden pt-28 sm:pt-32">
       <div className="pointer-events-none absolute -right-40 top-10 h-[520px] w-[520px] rounded-full bg-cobalt/10 blur-[120px]" />
       <div className="pointer-events-none absolute -left-40 top-[40%] h-[420px] w-[420px] rounded-full bg-flame/10 blur-[120px]" />
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-2 px-5 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-6">
         <div className="relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease }}
-            className="mb-5 flex flex-wrap items-center gap-x-2 gap-y-1"
-          >
-            <span className="font-display text-sm font-semibold">Sachit Bansal</span>
-            <span className="h-1 w-1 rounded-full bg-muted/50" />
-            <span className="font-mono text-[11px] uppercase tracking-wider text-muted">{identity}</span>
-          </motion.div>
           <h1 className="font-display text-[clamp(34px,4.1vw,52px)] font-bold leading-[1.04] tracking-[-0.035em]">
             {words.map((w, i) => (
               <motion.span
@@ -65,18 +55,19 @@ export function Hero() {
             make better decisions and eliminate repetitive work, from concept to deployment.
           </motion.p>
 
-          <motion.ul
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.85, ease }}
-            className="mt-5 flex flex-wrap gap-1.5"
+            className="mt-6 flex max-w-[54ch] gap-3.5 rounded-2xl border border-line bg-surface/80 p-4 backdrop-blur"
           >
-            {highlights.map((h) => (
-              <li key={h} className="rounded-full border border-line bg-surface px-2.5 py-1 font-mono text-[11px] text-muted">
-                {h}
-              </li>
-            ))}
-          </motion.ul>
+            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-flame/10 font-mono text-[13px] font-semibold text-flame">
+              {"</>"}
+            </span>
+            <p className="text-[14px] leading-relaxed text-muted">
+              <span className="font-display font-semibold text-ink">{origin.lead}</span> {origin.body}
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -132,7 +123,7 @@ export function Hero() {
 
       {/* Proof strip */}
       <div className="relative mx-auto max-w-6xl px-5 pb-14 sm:mt-6 sm:px-6 sm:pb-16">
-        <div className="grid grid-cols-2 overflow-hidden rounded-3xl border border-line bg-surface/80 backdrop-blur lg:grid-cols-4">
+        <div className="grid grid-cols-3 overflow-hidden rounded-3xl border border-line bg-surface/80 backdrop-blur">
           {proof.map((p, i) => (
             <motion.div
               key={p.label}
@@ -140,14 +131,12 @@ export function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08, ease }}
-              className={`flex flex-col gap-1 border-line p-4 sm:p-7 ${i % 2 === 0 ? "border-r" : ""} ${i < 2 ? "border-b lg:border-b-0" : ""} ${
-                i === 1 ? "lg:border-r" : ""
-              }`}
+              className={`flex flex-col gap-1 border-line p-3.5 sm:p-7 ${i < proof.length - 1 ? "border-r" : ""}`}
             >
-              <div className="font-display text-3xl font-bold tracking-tight sm:text-5xl">
+              <div className="font-display text-2xl font-bold tracking-tight sm:text-5xl">
                 <CountUp to={p.value} prefix={p.prefix} suffix={p.suffix} />
               </div>
-              <div className="text-sm font-medium leading-snug sm:text-base">{p.label}</div>
+              <div className="text-[13px] font-medium leading-snug sm:text-base">{p.label}</div>
               <div className="text-[11px] leading-snug text-muted sm:text-xs">{p.note}</div>
             </motion.div>
           ))}

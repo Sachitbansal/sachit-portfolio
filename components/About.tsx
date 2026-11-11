@@ -81,43 +81,55 @@ export function Credentials() {
         </h2>
       </Reveal>
 
-      <div className="grid gap-4 lg:grid-cols-[1fr_1.15fr]">
-        <Reveal className="flex flex-col gap-4">
-          {education.map((e) => (
-            <div key={e.school} className="rounded-3xl border border-line bg-surface p-6">
-              <div className="font-mono text-xs text-muted">{e.when}</div>
-              <div className="mt-2 font-display text-xl font-bold leading-tight">{e.school}</div>
-              <div className="mt-1 text-[15px] text-muted">{e.detail}</div>
+      {/* row 1: education side by side */}
+      <Reveal className="grid gap-4 md:grid-cols-2">
+        {education.map((e) => (
+          <div key={e.school} className="flex flex-col rounded-3xl border border-line bg-surface p-6">
+            <div className="flex items-center justify-between gap-3">
+              <span className="rounded-full bg-flame/10 px-2.5 py-1 text-xs font-medium text-flame">Education</span>
+              <span className="font-mono text-xs text-muted">{e.when}</span>
             </div>
-          ))}
-          <div className="relative overflow-hidden rounded-3xl bg-ink p-6 text-white">
-            <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-flame/40 blur-[70px]" />
-            <div className="label relative mb-4 text-[11px] text-white/50">Selected achievements</div>
-            <ul className="relative grid gap-3">
-              {achievements.map((a) => (
-                <li key={a.title} className="flex gap-3">
-                  <span className="mt-[3px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-flame text-[10px]">★</span>
-                  <div>
-                    <div className="font-medium leading-snug">{a.title}</div>
-                    <div className="text-sm text-white/50">{a.where}</div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-4 font-display text-xl font-bold leading-tight">{e.school}</div>
+            <div className="mt-1 text-[15px] text-muted">{e.detail}</div>
           </div>
+        ))}
+      </Reveal>
+
+      {/* row 2: wins (wide, dark) + leadership (one card, divided list) */}
+      <div className="mt-4 grid gap-4 lg:grid-cols-[1.25fr_1fr]">
+        <Reveal className="relative flex flex-col overflow-hidden rounded-3xl bg-ink p-6 text-white sm:p-8">
+          <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-flame/40 blur-[70px]" />
+          <h3 className="relative font-display text-xl font-bold">Wins & recognition</h3>
+          <ul className="relative mb-6 mt-5 grid gap-x-6 gap-y-4 sm:grid-cols-2">
+            {achievements.map((a) => (
+              <li key={a.title} className="flex gap-3">
+                <span className="mt-[3px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-flame text-[10px]">★</span>
+                <div>
+                  <div className="font-medium leading-snug">{a.title}</div>
+                  <div className="text-sm text-white/50">{a.where}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <p className="relative mt-auto border-t border-white/10 pt-5 text-sm text-white/60">
+            <span className="font-display text-2xl font-bold text-white">15</span>
+            <span className="ml-2">hackathons won, including events run by IIT Bombay, IIT Guwahati and IIT Madras.</span>
+          </p>
         </Reveal>
 
-        <Reveal delay={0.1} className="flex flex-col gap-4">
-          <div className="label px-1 pt-1 text-[11px] text-muted">Leadership & contribution</div>
-          {leadership.map((l) => (
-            <div key={l.role} className="rounded-3xl border border-line bg-surface p-6">
-              <div className="flex flex-wrap items-baseline justify-between gap-x-3">
-                <div className="font-display text-xl font-bold leading-tight">{l.role}</div>
-                <div className="font-mono text-xs text-flame">{l.org}</div>
-              </div>
-              <p className="mt-2 text-[15px] leading-relaxed text-muted">{l.body}</p>
-            </div>
-          ))}
+        <Reveal delay={0.1} className="rounded-3xl border border-line bg-surface p-6 sm:p-8">
+          <h3 className="font-display text-xl font-bold">Leadership & responsibility</h3>
+          <ul className="mt-2 divide-y divide-line">
+            {leadership.map((l) => (
+              <li key={l.role} className="py-4 last:pb-0">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                  <div className="font-display text-[17px] font-bold leading-tight">{l.role}</div>
+                  <div className="font-mono text-xs text-flame">{l.org}</div>
+                </div>
+                <p className="mt-1.5 text-[14px] leading-relaxed text-muted">{l.body}</p>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </div>
     </section>

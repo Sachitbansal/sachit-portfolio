@@ -17,12 +17,17 @@ export const identity = "AI Engineer · Agentic AI · Intelligent Automation · 
 
 export const highlights = ["Agentic AI", "LLM Applications", "RAG", "Workflow Automation", "Python", "Full-Stack Engineering"]
 
-export const credibility = ["IIT Mandi", "Leibniz University Hannover", "2× KrackHack Champion"]
+export const credibility = ["IIT Mandi", "Leibniz University Hannover", "15 hackathons won"]
+
+// The USP: hand-coded foundations from before AI coding tools, applied to modern AI problems.
+export const origin = {
+  lead: "Coding since 14. First app on the Play Store at 16.",
+  body: "I spent a year building that app entirely by hand, long before AI could write code. Today I bring that foundation to modern problems: I know how to use AI to move fast, and I understand every line underneath it.",
+}
 
 export const proof = [
-  { value: 2, suffix: "×", label: "KrackHack champion", note: "1st place 2025 and 2026, GDG IIT Mandi" },
   { value: 50, suffix: "+", label: "websites administered", note: "IIT Mandi's student server, 3,000+ users" },
-  { value: 11, suffix: "", label: "competition wins", note: "out of 19 entered, incl. IIT Bombay, Guwahati, Madras" },
+  { value: 15, suffix: "", label: "hackathons won", note: "incl. events by IIT Bombay, Guwahati, Madras" },
   { value: 9, prefix: "AIR ", suffix: "", label: "among 15,000+", note: "Shaastra Juniors, IIT Madras" },
 ]
 
@@ -225,10 +230,10 @@ export const projects: Project[] = [
 
 export const journey = [
   { when: "Class 4", title: "Rubik's cubes", body: "A simple cube turned into a fascination with harder and harder puzzles, and the satisfaction of solving them." },
-  { when: "Class 9", title: "Curiosity turns to code", body: "Started learning Python, web development and mobile app development, not for a curriculum but to make ideas real." },
-  { when: "Before 16", title: "First app on the Play Store", body: "Built and published my first Android application." },
+  { when: "Age 14", title: "Curiosity turns to code", body: "Started learning Python, web development and mobile app development, not for a curriculum but to make ideas real." },
+  { when: "Age 16", title: "First app on the Play Store", body: "A full year building and publishing an Android app alone, every line by hand, before AI coding tools existed." },
   { when: "Class 10", title: "Keynote at GDG, UPES Dehradun", body: "Delivered a hands-on Flutter session as a keynote speaker at a Google Developer Group event." },
-  { when: "Lockdown", title: "19 competitions, 11 wins", body: "Online tech competitions, including ones run by IIT Bombay, IIT Guwahati and IIT Madras." },
+  { when: "Lockdown", title: "Competitions & hackathons", body: "Started competing online, including events run by IIT Bombay, IIT Guwahati and IIT Madras." },
   { when: "Lockdown", title: "2,000+ learners on YouTube", body: "Started a channel teaching Python and Flutter that grew organically past 2,000 subscribers." },
   { when: "IIT Mandi", title: "From curiosity to engineering", body: "Cybersecurity, AI, machine learning and systems. Google Cybersecurity certificate, Cybersecurity Club, server administration, mentoring and teaching." },
   { when: "Today", title: "Agentic systems & automation", body: "Software engineering, applied AI, agentic systems and automation, with the same motivation: understand deeply, build something useful." },

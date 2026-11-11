@@ -11,9 +11,10 @@ export function Process() {
   const fill = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   return (
-    <section id="process" data-dark className="rounded-[32px] bg-night text-white sm:rounded-[56px]">
-      <div className="mx-auto max-w-6xl scroll-mt-24 px-4 pb-28 pt-24 sm:px-6">
-        <Reveal className="mb-14">
+    <section id="process" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6">
+      <div data-dark className="relative overflow-hidden rounded-[28px] bg-night px-6 pb-14 pt-14 text-white sm:rounded-[40px] sm:px-12 sm:pb-16 sm:pt-16">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-flame/25 blur-[100px]" />
+        <Reveal className="relative mb-12">
           <div className="label mb-3 text-flame">How I work</div>
           <h2 className="max-w-[20ch] font-display text-[clamp(32px,4.4vw,52px)] font-bold leading-[1.02] tracking-[-0.03em]">
             From an idea to a working solution.
@@ -50,7 +51,7 @@ export function Process() {
             ))}
           </ol>
         </div>
-        <Reveal className="mt-14">
+        <Reveal className="relative mt-12 border-t border-night-line pt-8">
           <p className="font-display text-xl font-medium text-white/85 sm:text-2xl">
             Clear communication, practical engineering and a focus on delivery.
           </p>

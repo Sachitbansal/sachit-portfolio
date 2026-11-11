@@ -10,7 +10,7 @@ const sans = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "500"] })
 
 const description =
-  "AI engineer from IIT Mandi building agentic AI systems, intelligent automations and AI-powered applications, from concept to deployment. 2× KrackHack champion."
+  "AI engineer from IIT Mandi building agentic AI systems, intelligent automations and AI-powered applications, from concept to deployment. Coding since 14, first Play Store app at 16."
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

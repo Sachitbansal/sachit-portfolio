@@ -136,30 +136,30 @@ export function Services() {
 
       {/* phone: swipeable row · tablet & desktop: 2×2 grid */}
       <Reveal>
-      <div ref={row} className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
+      <div ref={row} className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-5 px-5 pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
         {services.map((s, i) => (
           <div key={s.key} className="w-[82%] shrink-0 snap-start sm:w-auto">
             <Tilt className="h-full" max={3}>
-              <article className="group flex h-full flex-col rounded-3xl border border-line bg-surface p-6 transition-shadow duration-300 hover:shadow-[0_30px_60px_-30px_rgba(16,27,45,0.25)] lg:p-7">
-                <div className="flex items-start gap-4">
-                  <div className="h-14 w-[72px] shrink-0 transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105 lg:h-16 lg:w-20">
+              <article className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-5 transition-shadow duration-300 hover:shadow-[0_24px_48px_-30px_rgba(16,27,45,0.25)]">
+                <div className="flex items-center gap-3.5">
+                  <div className="h-11 w-14 shrink-0 transition-transform duration-500 group-hover:-translate-y-0.5">
                     <Glyph k={s.key} />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="font-display text-xl font-bold leading-tight tracking-tight lg:text-[22px]">{s.title}</h3>
-                    <p className="mt-1 text-[15px] leading-snug text-muted">{s.tagline}</p>
+                    <h3 className="font-display text-lg font-bold leading-tight tracking-tight">{s.title}</h3>
+                    <p className="mt-0.5 text-[13.5px] leading-snug text-muted">{s.tagline}</p>
                   </div>
                 </div>
-                <ul className="mt-5 grid gap-1.5">
+                <ul className="mt-3.5 grid gap-1 sm:grid-cols-2 sm:gap-x-4">
                   {s.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2.5 text-[14px] leading-snug">
-                      <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-flame" />
+                    <li key={b} className="flex items-start gap-2 text-[13px] leading-snug">
+                      <span className="mt-[6px] h-1 w-1 shrink-0 rounded-full bg-flame" />
                       {b}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-auto pt-5">
-                  <div className="rounded-2xl bg-paper px-4 py-3 text-[13px] leading-snug text-muted">
+                <div className="mt-auto pt-3.5">
+                  <div className="rounded-xl bg-paper px-3 py-2 text-[12.5px] leading-snug text-muted">
                     <span className="mr-1.5 font-mono text-[10px] uppercase tracking-wider text-flame">Example</span>
                     {s.example}
                   </div>
