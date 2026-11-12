@@ -48,24 +48,20 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.75, ease }}
             className="mt-5 max-w-[54ch] text-base leading-relaxed text-muted sm:mt-6 sm:text-[17px]"
           >
-            <span className="font-medium text-ink">
-              Businesses don&apos;t need another AI experiment. They need technology that solves actual problems.
-            </span>{" "}
-            I build agentic AI systems, intelligent automations and AI-powered applications that help teams work smarter,
-            make better decisions and eliminate repetitive work, from concept to deployment.
+            Not another AI experiment. Technology that solves real problems, from concept to deployment.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.85, ease }}
-            className="mt-6 flex max-w-[54ch] gap-3.5 rounded-2xl border border-line bg-surface/80 p-4 backdrop-blur"
+            className="mt-5 inline-flex max-w-full items-center gap-3 rounded-2xl sm:rounded-full border border-line bg-surface/80 py-1.5 pl-1.5 pr-4 backdrop-blur"
           >
-            <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-flame/10 font-mono text-[13px] font-semibold text-flame">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-flame/10 font-mono text-[11px] font-semibold text-flame">
               {"</>"}
             </span>
-            <p className="text-[14px] leading-relaxed text-muted">
-              <span className="font-display font-semibold text-ink">{origin.lead}</span> {origin.body}
+            <p className="text-[13.5px] leading-snug text-muted">
+              <span className="font-display font-semibold text-ink">{origin.lead}</span> {origin.short}
             </p>
           </motion.div>
 

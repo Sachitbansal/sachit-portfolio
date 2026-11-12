@@ -150,7 +150,7 @@ export function Services() {
                     <p className="mt-0.5 text-[13.5px] leading-snug text-muted">{s.tagline}</p>
                   </div>
                 </div>
-                <ul className="mt-3.5 grid gap-1 sm:grid-cols-2 sm:gap-x-4">
+                <ul className="mt-4 grid gap-2">
                   {s.bullets.map((b) => (
                     <li key={b} className="flex items-start gap-2 text-[13px] leading-snug">
                       <span className="mt-[6px] h-1 w-1 shrink-0 rounded-full bg-flame" />

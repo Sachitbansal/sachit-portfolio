@@ -21,7 +21,8 @@ export const credibility = ["IIT Mandi", "Leibniz University Hannover", "15 hack
 
 // The USP: hand-coded foundations from before AI coding tools, applied to modern AI problems.
 export const origin = {
-  lead: "Coding since 14. First app on the Play Store at 16.",
+  lead: "Coding since 14.",
+  short: "First Play Store app at 16, hand-coded before AI tools.",
   body: "I spent a year building that app entirely by hand, long before AI could write code. Today I bring that foundation to modern problems: I know how to use AI to move fast, and I understand every line underneath it.",
 }
 
